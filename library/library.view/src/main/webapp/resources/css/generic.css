@@ -19,7 +19,6 @@ body.web div#menu div#usuario #btnHome {position:relative; text-decoration:none;
 body.web div#footer {position:absolute; bottom:0px; width:100%; font-size:0.9em; color:#CCCCCC; text-align:center; padding:3px; background: rgb(0, 0, 0); background: -moz-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -webkit-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -o-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -ms-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%);}
 
 body.web div#content {overflow:auto;position:absolute; top:81px; width:100%;}
-body.web div#content img{position:absolute; top: 150px; left:63%;margin-left:-212px;}
 body.web div#content fieldset {border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; margin:20px;}
 body.web div#content form label {width:115px; display:inline-block;}
 body.web div#content form input.text {width:220px; }
