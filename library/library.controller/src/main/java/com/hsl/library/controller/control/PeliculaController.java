@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hsl.library.controller.dto.MensajeDTO;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
+import com.hsl.library.model.bean.Genero;
 import com.hsl.library.model.bean.Pelicula;
 import com.hsl.library.model.exception.DatabaseDeleteException;
 import com.hsl.library.model.exception.DatabaseInsertException;
@@ -61,6 +62,15 @@ public class PeliculaController {
 			operacion = "form";
 		}
 		return new StringBuffer("pelicula/").append(operacion).toString();
+	}
+	
+	@RequestMapping(value = "/generos", method = RequestMethod.GET)
+	public @ResponseBody List<String> getGeneros() {
+		List<String> result = new ArrayList<String>();
+		for(Genero genero : Genero.values()){
+			result.add(genero.getGenero());
+		}
+		return result;
 	}
 
 //	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)

@@ -79,12 +79,12 @@ var pelicula = {
 			generic.getForm('pelicula');
 		});
 		$("#btnEditar").button().click(function() {
-			generic.getForm('pelicula', $('#lista').jqGrid('getRowData', paciente.rowID).id);
+			generic.getForm('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
 		});
 		$("#btnEditar").button("disable");
 
 		$("#btnEliminar").button().click(function() {
-			generic.delete('pelicula', $('#lista').jqGrid('getRowData', paciente.rowID).id, function() {
+			generic.delete('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id, function() {
 				generic.getList('pelicula');
 			});
 		});
@@ -97,11 +97,11 @@ var pelicula = {
 		}).trigger('resize');
 		
 		$("#btnCancel").button().click(function() {
-			generic.getList('paciente');
+			generic.getList('pelicula');
 		});
 
 		$("#btnSavePelicula").button().click(function() {
-			paciente.getParams();
+			pelicula.getParams();
 		});
 		
 		var datePickerParams = {
@@ -119,46 +119,46 @@ var pelicula = {
         		changeMonth: true,
         		changeYear: true,
         };
-		$("#fechaNacimiento").datepicker(datePickerParams);
+		$("#fechaEstreno").datepicker(datePickerParams);
 	},
 	'getParams' : function() {
 		var id = ($("#id").val()) ? $("#id").val() : null;
-		var nombre = $("input[id=nombre]").val();
-		var apellidos = $("input[id=apellidos]").val();
-		var email = $("input[id=email]").val();
-		var telefono = $("input[id=telefono]").val();
-		var altura = $("input[id=altura]").val();
-		var fechaNacimiento = $("input[id=fechaNacimiento]").val();
-		var enfermedades = $("#enfermedades").val();
-		var objetivo = $("#objetivo").val();
-		var costumbres = $("#costumbres").val();
+		var titulo = $("input[id=titulo]").val();
+		var director = $("input[id=director]").val();
+		var fechaEstreno = $("input[id=fechaEstreno]").val();
+		var distribuidora = $("input[id=distribuidora]").val();
+		var duracion = $("input[id=duracion]").val();
+		var genero = $("input[id=genero]").val();
+		var formato = $("input[id=formato]").val();
+		var interpretes = $("#interpretes").val();
+		var sinopsis = $("#sinopsis").val();
 		var errores = '';
-		if (nombre == '') {
-			errores += '- Debe introducir el nombre<br/>';
+		if (titulo == '') {
+			errores += '- Debe introducir el t&iacute;tulo<br/>';
 		}
-		if (apellidos == '') {
-			errores += '- Debe introducir los apellidos<br/>';
+		if (director == '') {
+			errores += '- Debe introducir el nombre del director<br/>';
 		}
-		if (!validarEmail(email)){
-			errores += '- Debe introducir un correo electronico correcto<br/>';
+		if (fechaEstreno == ''){
+			errores += '- Debe introducir la fecha de estreno<br/>';
 		}
-		if (telefono == '' && telefono.length == 9) {
-			errores += '- Debe introducir un telefono correcto<br/>';
+		if (distribuidora == '') {
+			errores += '- Debe introducir la distribuidora de la pel&iacute;cula<br/>';
 		}
-		if (altura == '' && altura.length == 3) {
-			errores += '- Debe introducir una altura correcta<br/>';
+		if (duracion == '' || !isNumber(duracion)) {
+			errores += '- Debe introducir una duraci&oacute;n correcta<br/>';
 		}
-		if (fechaNacimiento == '') {
-			errores += '- Debe introducir una fecha';
+		if (genero == '') {
+			errores += '- Debe introducir el g&eacute;nero de la pel&iacute;cula<br/>';
 		}
-		if (objetivo == '') {
-			errores += '- Debe introducir un objetivo';
+		if (formato == '') {
+			errores += '- Debe introducir un formato de pel&iacute;cula<br/>';
 		}
-		if (enfermedades == '') {
-			errores += '- Debe introducir las enfermedades del paciente';
+		if (interpretes == '') {
+			errores += '- Debe introducir los int&eacute;rpretes de la pel&iacute;cula<br/>';
 		}
-		if (costumbres == '') {
-			errores += '- Debe introducir las costumbres del paciente';
+		if (sinopsis == '') {
+			errores += '- Debe introducir la sinopsis de la pel&iacute;cula';
 		}
 		if (errores != '') {
 			jAlert(errores, "Validaci&oacute;n");
@@ -166,19 +166,19 @@ var pelicula = {
 		else {
 			var data = {
 				id : id,
-				nombre : nombre,
-				apellidos : apellidos,
-				email : email,
-				telefono : telefono,
-				altura : altura,
-				fechaNacimiento : fechaNacimiento,
-				objetivo : objetivo,
-				enfermedades : enfermedades,
-				costumbres : costumbres
+				titulo : titulo,
+				director : director,
+				fechaEstreno : fechaEstreno,
+				distribuidora : distribuidora,
+				duracion : duracion,
+				genero : genero,
+				formato : formato,
+				interpretes : interpretes,
+				sinopsis : sinopsis
 			};
-			var entity = (id != null) ? 'paciente/' + id : 'paciente';
+			var entity = (id != null) ? 'pelicula/' + id : 'pelicula';
 			generic.post(entity, data, function() {
-				generic.getList('paciente');
+				generic.getList('pelicula');
 			});
 		};
 	},
@@ -193,3 +193,6 @@ var pelicula = {
 			generic.get('pelicula/busqueda',data,generic.showInformation);
 	}
 };
+function isNumber(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+}

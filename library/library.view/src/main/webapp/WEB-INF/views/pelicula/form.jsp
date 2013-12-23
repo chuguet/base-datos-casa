@@ -3,25 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <style>
- 	textarea{vertical-align: top; display:block;}
- 	input{vertical-align: top; display:block;}
- 	label{width:100%}
-	td {margin-left:140px; vertical-align: top; text-align:center;}
+	.table{display:inline-block; vertical-align:top;}
+  	textarea{vertical-align: top; display:block;}
+  	input{vertical-align: top; display:block;} 
 </style>
 <script type="text/javascript">
 	pelicula.formatForm();
 	<c:if test="${operacion == 'edit'}">
 		function showInformationIntoView(pelicula){
 			$('input[id=id]').val(pelicula.id);
-			$('input[id=nombre]').val(pelicula.nombre);
-			$('input[id=apellidos]').val(pelicula.apellidos);
-			$('input[id=email]').val(pelicula.email);
-			$('input[id=fechaNacimiento]').val(pelicula.fechaNacimiento);
-			$('input[id=telefono]').val(pelicula.telefono);
-			$('input[id=altura]').val(pelicula.altura);
-			$('#objetivo').val(pelicula.objetivo);
-			$('#enfermedades').val(pelicula.enfermedades);
-			$('#costumbres').val(pelicula.costumbres);
+			$('input[id=titulo]').val(pelicula.titulo);
+			$('input[id=director]').val(pelicula.director);
+			$('input[id=genero]').val(pelicula.genero);
+			$('input[id=fechaEstreno]').val(pelicula.fechaEstreno);
+			$('input[id=interpretes]').val(pelicula.interpretes);
+			$('input[id=distribuidora]').val(pelicula.distribuidora);
+			$('input[id=formato]').val(pelicula.formato);
+			$('input[id=duracion]').val(pelicula.duracion);
+			$('#sinopsis').val(pelicula.sinopsis);
 		};
 	</c:if>
 </script>
@@ -29,57 +28,53 @@
 	<fieldset>
 		<legend>
 		<c:choose>
-			<c:when test="${operacion == 'new'}">Alta de Pelicula</c:when>
-			<c:otherwise>Edici&oacute;n de Pelicula</c:otherwise>
+			<c:when test="${operacion == 'new'}">Alta de Pel&iacute;cula</c:when>
+			<c:otherwise>Edici&oacute;n de Pel&iacute;cula</c:otherwise>
 		</c:choose>
 		</legend>
-		<table>
-			<tr>
-				<input type="hidden" id="id" />
-				<td>
-					<p>
-						<label for="nombre">Nombre</label>
-						<input id="nombre" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						<label for="apellidos">Apellidos</label>
-						<input id="apellidos" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						<label for="fechaNacimiento">Fecha Nacimiento</label>
-						<input id="fechaNacimiento" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						<label for="altura">Altura</label>
-						<input id="altura" type="textbox" maxlength="3" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						<label for="telefono">Telefono</label>
-						<input id="telefono" type="textbox" maxlength="9" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						<label for="email">Email</label>
-						<input id="email" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-					</p>
-				</td>
-				<td>
-					<p>
-						<label for="objetivo">Objetivo</label>
-						<textarea id="objetivo" cols="50" rows="8" class="text ui-widget-content ui-corner-all" />
-					</p>
-					<p>
-						Patologías, alergias y tratamientos
-						<textarea id="enfermedades" cols="50" rows="7" class="text ui-widget-content ui-corner-all" />
-					</p>
-				</td>
-				<td>
-					<p>
-						<label for="costumbres">Costumbres</label>
-						<textarea id="costumbres" cols="50" rows="18" class="text ui-widget-content ui-corner-all" />
-					</p>
-				</td>
-			</tr>
-		</table>
+		<div class="table">
+			<input type="hidden" id="id" />
+			<p>
+				<label for="titulo">T&iacute;tulo</label>
+				<input id="titulo" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="director">Director</label>
+				<input id="director" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="fechaEstreno">Fecha estreno</label>
+				<input id="fechaEstreno" readonly=true type="textbox" maxlength="3" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="distribuidora">Distribuidora</label>
+				<input id="distribuidora" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="duracion">Duraci&oacute;n</label>
+				<input id="duracion" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+		</div>
+		<div class="table">
+			<p>
+				<label for="genero">G&eacute;nero</label>
+				<input id="genero" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="formato">Formato</label>
+				<input id="formato" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p>
+				<label for="interpretes">Int&eacute;rpretes</label>
+				<textarea id="interpretes" cols="50" rows="7" class="text ui-widget-content ui-corner-all" />
+			</p>
+		</div>
+		<div class="table">
+			<p>
+				<label for="sinopsis">Sinopsis</label>
+				<textarea id="sinopsis" cols="50" rows="14" class="text ui-widget-content ui-corner-all" />
+			</p>
+		</div>
 		<div class="botonera">
 			<c:choose>
 				<c:when test="${operacion == 'new'}">
