@@ -26,45 +26,35 @@ public class Pelicula implements IModelTable {
 	@Column(name = "CALIFICACION")
 	private Calificacion calificacion;
 
-	/** The titulo. */
-	@Basic
-	@Column(name = "TITULO")
-	private String titulo;
-
 	/** The director. */
 	@Basic
 	@Column(name = "DIRECTOR")
 	private String director;
-
-	/** The nacionalidad. */
-	@Basic
-	@Column(name = "NACIONALIDAD")
-	private String nacionalidad;
-
-	/** The genero. */
-	@Basic
-	@Column(name = "GENERO")
-	private Genero genero;
-
-	/** The fecha estreno. */
-	@Basic
-	@Column(name = "FECHA_ESTRENO")
-	private Date fechaEstreno;
-
-	/** The interpretes. */
-	@Basic
-	@Column(name = "INTERPRETES")
-	private String interpretes;
 
 	/** The distribuidora. */
 	@Basic
 	@Column(name = "DISTRIBUIDORA")
 	private String distribuidora;
 
-	/** The sinopsis. */
+	/** The duracion. */
 	@Basic
-	@Column(name = "SINOPSIS")
-	private String sinopsis;
+	@Column(name = "DURACION")
+	private Integer duracion;
+
+	/** The fecha estreno. */
+	@Basic
+	@Column(name = "FECHA_ESTRENO")
+	private Date fechaEstreno;
+
+	/** The formato. */
+	@Basic
+	@Column(name = "FORMATO")
+	private Formato formato;
+
+	/** The genero. */
+	@Basic
+	@Column(name = "GENERO")
+	private Genero genero;
 
 	/** The id. */
 	@Id
@@ -72,10 +62,25 @@ public class Pelicula implements IModelTable {
 	@Column(name = "ID_PELICULA")
 	private Integer id;
 
-	/** The duracion. */
+	/** The interpretes. */
 	@Basic
-	@Column(name = "DURACION")
-	private Integer duracion;
+	@Column(name = "INTERPRETES")
+	private String interpretes;
+
+	/** The nacionalidad. */
+	@Basic
+	@Column(name = "NACIONALIDAD")
+	private String nacionalidad;
+
+	/** The sinopsis. */
+	@Basic
+	@Column(name = "SINOPSIS")
+	private String sinopsis;
+
+	/** The titulo. */
+	@Basic
+	@Column(name = "TITULO")
+	private String titulo;
 
 	/**
 	 * Gets the calificacion.
@@ -84,6 +89,105 @@ public class Pelicula implements IModelTable {
 	 */
 	public Calificacion getCalificacion() {
 		return calificacion;
+	}
+
+	/**
+	 * Gets the director.
+	 * 
+	 * @return the director
+	 */
+	public String getDirector() {
+		return director;
+	}
+
+	/**
+	 * Gets the distribuidora.
+	 * 
+	 * @return the distribuidora
+	 */
+	public String getDistribuidora() {
+		return distribuidora;
+	}
+
+	/**
+	 * Gets the duracion.
+	 * 
+	 * @return the duracion
+	 */
+	public Integer getDuracion() {
+		return duracion;
+	}
+
+	/**
+	 * Gets the fecha estreno.
+	 * 
+	 * @return the fecha estreno
+	 */
+	public Date getFechaEstreno() {
+		return fechaEstreno;
+	}
+
+	/**
+	 * Gets the formato.
+	 * 
+	 * @return the formato
+	 */
+	public Formato getFormato() {
+		return formato;
+	}
+
+	/**
+	 * Gets the genero.
+	 * 
+	 * @return the genero
+	 */
+	public Genero getGenero() {
+		return genero;
+	}
+
+	/**
+	 * Gets the id.
+	 * 
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * Gets the interpretes.
+	 * 
+	 * @return the interpretes
+	 */
+	public String getInterpretes() {
+		return interpretes;
+	}
+
+	/**
+	 * Gets the nacionalidad.
+	 * 
+	 * @return the nacionalidad
+	 */
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	/**
+	 * Gets the sinopsis.
+	 * 
+	 * @return the sinopsis
+	 */
+	public String getSinopsis() {
+		return sinopsis;
+	}
+
+	/**
+	 * Gets the titulo.
+	 * 
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
 	}
 
 	/**
@@ -97,34 +201,6 @@ public class Pelicula implements IModelTable {
 	}
 
 	/**
-	 * Gets the titulo.
-	 * 
-	 * @return the titulo
-	 */
-	public String getTitulo() {
-		return titulo;
-	}
-
-	/**
-	 * Sets the titulo.
-	 * 
-	 * @param titulo
-	 *            the new titulo
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	/**
-	 * Gets the director.
-	 * 
-	 * @return the director
-	 */
-	public String getDirector() {
-		return director;
-	}
-
-	/**
 	 * Sets the director.
 	 * 
 	 * @param director
@@ -132,91 +208,6 @@ public class Pelicula implements IModelTable {
 	 */
 	public void setDirector(String director) {
 		this.director = director;
-	}
-
-	/**
-	 * Gets the nacionalidad.
-	 * 
-	 * @return the nacionalidad
-	 */
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
-
-	/**
-	 * Sets the nacionalidad.
-	 * 
-	 * @param nacionalidad
-	 *            the new nacionalidad
-	 */
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	/**
-	 * Gets the genero.
-	 * 
-	 * @return the genero
-	 */
-	public Genero getGenero() {
-		return genero;
-	}
-
-	/**
-	 * Sets the genero.
-	 * 
-	 * @param genero
-	 *            the new genero
-	 */
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
-	/**
-	 * Gets the fecha estreno.
-	 * 
-	 * @return the fecha estreno
-	 */
-	public Date getFechaEstreno() {
-		return fechaEstreno;
-	}
-
-	/**
-	 * Sets the fecha estreno.
-	 * 
-	 * @param fechaEstreno
-	 *            the new fecha estreno
-	 */
-	public void setFechaEstreno(Date fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
-	}
-
-	/**
-	 * Gets the interpretes.
-	 * 
-	 * @return the interpretes
-	 */
-	public String getInterpretes() {
-		return interpretes;
-	}
-
-	/**
-	 * Sets the interpretes.
-	 * 
-	 * @param interpretes
-	 *            the new interpretes
-	 */
-	public void setInterpretes(String interpretes) {
-		this.interpretes = interpretes;
-	}
-
-	/**
-	 * Gets the distribuidora.
-	 * 
-	 * @return the distribuidora
-	 */
-	public String getDistribuidora() {
-		return distribuidora;
 	}
 
 	/**
@@ -230,31 +221,43 @@ public class Pelicula implements IModelTable {
 	}
 
 	/**
-	 * Gets the sinopsis.
+	 * Sets the duracion.
 	 * 
-	 * @return the sinopsis
+	 * @param duracion
+	 *            the new duracion
 	 */
-	public String getSinopsis() {
-		return sinopsis;
+	public void setDuracion(Integer duracion) {
+		this.duracion = duracion;
 	}
 
 	/**
-	 * Sets the sinopsis.
+	 * Sets the fecha estreno.
 	 * 
-	 * @param sinopsis
-	 *            the new sinopsis
+	 * @param fechaEstreno
+	 *            the new fecha estreno
 	 */
-	public void setSinopsis(String sinopsis) {
-		this.sinopsis = sinopsis;
+	public void setFechaEstreno(Date fechaEstreno) {
+		this.fechaEstreno = fechaEstreno;
 	}
 
 	/**
-	 * Gets the id.
+	 * Sets the formato.
 	 * 
-	 * @return the id
+	 * @param formato
+	 *            the new formato
 	 */
-	public Integer getId() {
-		return id;
+	public void setFormato(Formato formato) {
+		this.formato = formato;
+	}
+
+	/**
+	 * Sets the genero.
+	 * 
+	 * @param genero
+	 *            the new genero
+	 */
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 	/**
@@ -268,22 +271,43 @@ public class Pelicula implements IModelTable {
 	}
 
 	/**
-	 * Gets the duracion.
+	 * Sets the interpretes.
 	 * 
-	 * @return the duracion
+	 * @param interpretes
+	 *            the new interpretes
 	 */
-	public Integer getDuracion() {
-		return duracion;
+	public void setInterpretes(String interpretes) {
+		this.interpretes = interpretes;
 	}
 
 	/**
-	 * Sets the duracion.
+	 * Sets the nacionalidad.
 	 * 
-	 * @param duracion
-	 *            the new duracion
+	 * @param nacionalidad
+	 *            the new nacionalidad
 	 */
-	public void setDuracion(Integer duracion) {
-		this.duracion = duracion;
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	/**
+	 * Sets the sinopsis.
+	 * 
+	 * @param sinopsis
+	 *            the new sinopsis
+	 */
+	public void setSinopsis(String sinopsis) {
+		this.sinopsis = sinopsis;
+	}
+
+	/**
+	 * Sets the titulo.
+	 * 
+	 * @param titulo
+	 *            the new titulo
+	 */
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 }

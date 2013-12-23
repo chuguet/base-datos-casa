@@ -16,7 +16,7 @@
 				<label for="distribuidora">Distribuidora:</label>
 				<input id="distribuidora" onkeyup="pelicula.buscar($('input[id=distribuidora]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="genero">G&eacute;nero:</label>
-				<input id="genero" onkeyup="pelicula.buscar($('input[id=genero]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="genero" onkeyup="pelicula.buscar($('input[id=genero]').val(),$('input[id=apellidos]').val())" type="textbox" readonly="true" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
 		</div>
 	</fieldset>

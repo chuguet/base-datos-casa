@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
 import com.hsl.library.model.bean.Calificacion;
+import com.hsl.library.model.bean.Formato;
 import com.hsl.library.model.bean.Genero;
 import com.hsl.library.model.bean.Pelicula;
 
@@ -45,6 +46,7 @@ public class PeliculaUtilDTO implements IPeliculaUtilDTO {
 		pelicula.setNacionalidad(peliculaDTO.getNacionalidad());
 		pelicula.setSinopsis(peliculaDTO.getSinopsis());
 		pelicula.setTitulo(peliculaDTO.getTitulo());
+		pelicula.setFormato(Formato.valueOf(peliculaDTO.getFormato()));
 		return pelicula;
 	}
 
@@ -70,6 +72,7 @@ public class PeliculaUtilDTO implements IPeliculaUtilDTO {
 		peliculaDTO.setNacionalidad(pelicula.getNacionalidad());
 		peliculaDTO.setSinopsis(pelicula.getSinopsis());
 		peliculaDTO.setTitulo(pelicula.getTitulo());
+		peliculaDTO.setFormato(pelicula.getFormato().getFormato());
 		return peliculaDTO;
 	}
 

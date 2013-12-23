@@ -1,6 +1,5 @@
 package com.hsl.library.controller.dto;
 
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class PeliculaDTO.
@@ -13,32 +12,35 @@ public class PeliculaDTO extends AbstractDTO {
 	/** The calificacion. */
 	private String calificacion;
 
-	/** The titulo. */
-	private String titulo;
-
 	/** The director. */
 	private String director;
-
-	/** The nacionalidad. */
-	private String nacionalidad;
-
-	/** The genero. */
-	private String genero;
-
-	/** The fecha estreno. */
-	private String fechaEstreno;
-
-	/** The interpretes. */
-	private String interpretes;
 
 	/** The distribuidora. */
 	private String distribuidora;
 
+	/** The duracion. */
+	private Integer duracion;
+
+	/** The fecha estreno. */
+	private String fechaEstreno;
+
+	/** The formato. */
+	private String formato;
+
+	/** The genero. */
+	private String genero;
+
+	/** The interpretes. */
+	private String interpretes;
+
+	/** The nacionalidad. */
+	private String nacionalidad;
+
 	/** The sinopsis. */
 	private String sinopsis;
 
-	/** The duracion. */
-	private Integer duracion;
+	/** The titulo. */
+	private String titulo;
 
 	/**
 	 * Gets the calificacion.
@@ -47,6 +49,96 @@ public class PeliculaDTO extends AbstractDTO {
 	 */
 	public String getCalificacion() {
 		return calificacion;
+	}
+
+	/**
+	 * Gets the director.
+	 * 
+	 * @return the director
+	 */
+	public String getDirector() {
+		return director;
+	}
+
+	/**
+	 * Gets the distribuidora.
+	 * 
+	 * @return the distribuidora
+	 */
+	public String getDistribuidora() {
+		return distribuidora;
+	}
+
+	/**
+	 * Gets the duracion.
+	 * 
+	 * @return the duracion
+	 */
+	public Integer getDuracion() {
+		return duracion;
+	}
+
+	/**
+	 * Gets the fecha estreno.
+	 * 
+	 * @return the fecha estreno
+	 */
+	public String getFechaEstreno() {
+		return fechaEstreno;
+	}
+
+	/**
+	 * Gets the formato.
+	 * 
+	 * @return the formato
+	 */
+	public String getFormato() {
+		return formato;
+	}
+
+	/**
+	 * Gets the genero.
+	 * 
+	 * @return the genero
+	 */
+	public String getGenero() {
+		return genero;
+	}
+
+	/**
+	 * Gets the interpretes.
+	 * 
+	 * @return the interpretes
+	 */
+	public String getInterpretes() {
+		return interpretes;
+	}
+
+	/**
+	 * Gets the nacionalidad.
+	 * 
+	 * @return the nacionalidad
+	 */
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	/**
+	 * Gets the sinopsis.
+	 * 
+	 * @return the sinopsis
+	 */
+	public String getSinopsis() {
+		return sinopsis;
+	}
+
+	/**
+	 * Gets the titulo.
+	 * 
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
 	}
 
 	/**
@@ -60,34 +152,6 @@ public class PeliculaDTO extends AbstractDTO {
 	}
 
 	/**
-	 * Gets the titulo.
-	 * 
-	 * @return the titulo
-	 */
-	public String getTitulo() {
-		return titulo;
-	}
-
-	/**
-	 * Sets the titulo.
-	 * 
-	 * @param titulo
-	 *            the new titulo
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	/**
-	 * Gets the director.
-	 * 
-	 * @return the director
-	 */
-	public String getDirector() {
-		return director;
-	}
-
-	/**
 	 * Sets the director.
 	 * 
 	 * @param director
@@ -95,91 +159,6 @@ public class PeliculaDTO extends AbstractDTO {
 	 */
 	public void setDirector(String director) {
 		this.director = director;
-	}
-
-	/**
-	 * Gets the nacionalidad.
-	 * 
-	 * @return the nacionalidad
-	 */
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
-
-	/**
-	 * Sets the nacionalidad.
-	 * 
-	 * @param nacionalidad
-	 *            the new nacionalidad
-	 */
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	/**
-	 * Gets the genero.
-	 * 
-	 * @return the genero
-	 */
-	public String getGenero() {
-		return genero;
-	}
-
-	/**
-	 * Sets the genero.
-	 * 
-	 * @param genero
-	 *            the new genero
-	 */
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	/**
-	 * Gets the fecha estreno.
-	 * 
-	 * @return the fecha estreno
-	 */
-	public String getFechaEstreno() {
-		return fechaEstreno;
-	}
-
-	/**
-	 * Sets the fecha estreno.
-	 * 
-	 * @param fechaEstreno
-	 *            the new fecha estreno
-	 */
-	public void setFechaEstreno(String fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
-	}
-
-	/**
-	 * Gets the interpretes.
-	 * 
-	 * @return the interpretes
-	 */
-	public String getInterpretes() {
-		return interpretes;
-	}
-
-	/**
-	 * Sets the interpretes.
-	 * 
-	 * @param interpretes
-	 *            the new interpretes
-	 */
-	public void setInterpretes(String interpretes) {
-		this.interpretes = interpretes;
-	}
-
-	/**
-	 * Gets the distribuidora.
-	 * 
-	 * @return the distribuidora
-	 */
-	public String getDistribuidora() {
-		return distribuidora;
 	}
 
 	/**
@@ -193,12 +172,63 @@ public class PeliculaDTO extends AbstractDTO {
 	}
 
 	/**
-	 * Gets the sinopsis.
+	 * Sets the duracion.
 	 * 
-	 * @return the sinopsis
+	 * @param duracion
+	 *            the new duracion
 	 */
-	public String getSinopsis() {
-		return sinopsis;
+	public void setDuracion(Integer duracion) {
+		this.duracion = duracion;
+	}
+
+	/**
+	 * Sets the fecha estreno.
+	 * 
+	 * @param fechaEstreno
+	 *            the new fecha estreno
+	 */
+	public void setFechaEstreno(String fechaEstreno) {
+		this.fechaEstreno = fechaEstreno;
+	}
+
+	/**
+	 * Sets the formato.
+	 * 
+	 * @param formato
+	 *            the new formato
+	 */
+	public void setFormato(String formato) {
+		this.formato = formato;
+	}
+
+	/**
+	 * Sets the genero.
+	 * 
+	 * @param genero
+	 *            the new genero
+	 */
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	/**
+	 * Sets the interpretes.
+	 * 
+	 * @param interpretes
+	 *            the new interpretes
+	 */
+	public void setInterpretes(String interpretes) {
+		this.interpretes = interpretes;
+	}
+
+	/**
+	 * Sets the nacionalidad.
+	 * 
+	 * @param nacionalidad
+	 *            the new nacionalidad
+	 */
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
 	}
 
 	/**
@@ -212,21 +242,12 @@ public class PeliculaDTO extends AbstractDTO {
 	}
 
 	/**
-	 * Gets the duracion.
+	 * Sets the titulo.
 	 * 
-	 * @return the duracion
+	 * @param titulo
+	 *            the new titulo
 	 */
-	public Integer getDuracion() {
-		return duracion;
-	}
-
-	/**
-	 * Sets the duracion.
-	 * 
-	 * @param duracion
-	 *            the new duracion
-	 */
-	public void setDuracion(Integer duracion) {
-		this.duracion = duracion;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 }
