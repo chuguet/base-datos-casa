@@ -1,0 +1,29 @@
+html {margin:0px; padding:0px;width:100%; height:100%; }
+body {width:100%; height:100%; font-size:0.9em; font-family:arial; background-color:#000000;margin:0px; padding:0px;}
+body div.ui-datepicker {font-size: 0.7em;}
+
+body.web {overflow:hidden; background: rgb(105, 105, 105); background: -moz-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -webkit-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -o-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -ms-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: linear-gradient(120deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%);}
+
+body.web div#header {overflow:hidden; color:#CCCCCC; height: 59px; position:absolute; top:0px; width:100%; background: rgb(0, 0, 0); background: -moz-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -webkit-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -o-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -ms-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%);}
+body.web div#header #titulo{display: inline-block; float:left; padding-left:20px;}
+body.web div#header #fecha{display:inline-block; float: right; padding-right:20px; margin-top:10px;}
+
+body.web div#menu {position:absolute; top:59px; height:20px; width:100%; overflow:hidden; background: rgb(43, 43, 45); background: -moz-linear-gradient(270deg, rgb(43, 43, 45) 19%, rgb(94, 96, 99) 67%); background: -webkit-linear-gradient(270deg, rgb(43, 43, 45) 19%, rgb(94, 96, 99) 67%); background: -o-linear-gradient(270deg, rgb(43, 43, 45) 19%, rgb(94, 96, 99) 67%); background: -ms-linear-gradient(270deg, rgb(43, 43, 45) 19%, rgb(94, 96, 99) 67%); background: linear-gradient(0deg, rgb(43, 43, 45) 19%, rgb(94, 96, 99) 67%);}
+body.web div#menu a.itemMenu{text-decoration:none; font-family:arial; font-size:0.9em; color:#CCCCCC; margin:0px 20px; font-weight:bold}
+body.web div#menu a.itemMenu:hover{color:#0077CD;}
+body.web div#menu div#usuario {position: absolute; top: 1px; right: 10px; font-size: 0.8em; }
+body.web div#menu div#usuario #nombreUsuario {position:relative; color: #CCCCCC; bottom:4px;}
+body.web div#menu div#usuario #btnUnlogin {position:relative; text-decoration:none; background-image:url(../imgs/logout.png); display:inline-block; width:18px; height:18px; margin-left:15px;}
+body.web div#menu div#usuario #btnHome {position:relative; text-decoration:none; background-image:url(../imgs/home.png); display:inline-block; width:18px; height:18px; margin-left:15px;}
+
+body.web div#footer {position:absolute; bottom:0px; width:100%; font-size:0.9em; color:#CCCCCC; text-align:center; padding:3px; background: rgb(0, 0, 0); background: -moz-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -webkit-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -o-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -ms-linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%);}
+
+body.web div#content {overflow:auto;position:absolute; top:81px; width:100%;}
+body.web div#content img{position:absolute; top: 150px; left:63%;margin-left:-212px;}
+body.web div#content fieldset {border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; margin:20px;}
+body.web div#content form label {width:115px; display:inline-block;}
+body.web div#content form input.text {width:220px; }
+
+body div.modal {display:none; position:fixed; z-index:1000; top:0; left: 0; height:100%; width:100%; background: rgba( 255, 255, 255, .8 ) url(../imgs/loading.gif) 50% 50% no-repeat;}
+body.loading {overflow: hidden;}
+body.loading .modal {display: block;}
