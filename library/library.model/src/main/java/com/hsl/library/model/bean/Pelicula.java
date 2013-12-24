@@ -82,6 +82,74 @@ public class Pelicula implements IModelTable {
 	@Column(name = "TITULO")
 	private String titulo;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pelicula other = (Pelicula) obj;
+		if (calificacion != other.calificacion)
+			return false;
+		if (director == null) {
+			if (other.director != null)
+				return false;
+		} else if (!director.equals(other.director))
+			return false;
+		if (distribuidora == null) {
+			if (other.distribuidora != null)
+				return false;
+		} else if (!distribuidora.equals(other.distribuidora))
+			return false;
+		if (duracion == null) {
+			if (other.duracion != null)
+				return false;
+		} else if (!duracion.equals(other.duracion))
+			return false;
+		if (fechaEstreno == null) {
+			if (other.fechaEstreno != null)
+				return false;
+		} else if (!fechaEstreno.equals(other.fechaEstreno))
+			return false;
+		if (formato != other.formato)
+			return false;
+		if (genero != other.genero)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (interpretes == null) {
+			if (other.interpretes != null)
+				return false;
+		} else if (!interpretes.equals(other.interpretes))
+			return false;
+		if (nacionalidad == null) {
+			if (other.nacionalidad != null)
+				return false;
+		} else if (!nacionalidad.equals(other.nacionalidad))
+			return false;
+		if (sinopsis == null) {
+			if (other.sinopsis != null)
+				return false;
+		} else if (!sinopsis.equals(other.sinopsis))
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Gets the calificacion.
 	 * 
@@ -188,6 +256,38 @@ public class Pelicula implements IModelTable {
 	 */
 	public String getTitulo() {
 		return titulo;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((calificacion == null) ? 0 : calificacion.hashCode());
+		result = prime * result
+				+ ((director == null) ? 0 : director.hashCode());
+		result = prime * result
+				+ ((distribuidora == null) ? 0 : distribuidora.hashCode());
+		result = prime * result
+				+ ((duracion == null) ? 0 : duracion.hashCode());
+		result = prime * result
+				+ ((fechaEstreno == null) ? 0 : fechaEstreno.hashCode());
+		result = prime * result + ((formato == null) ? 0 : formato.hashCode());
+		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((interpretes == null) ? 0 : interpretes.hashCode());
+		result = prime * result
+				+ ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
+		result = prime * result
+				+ ((sinopsis == null) ? 0 : sinopsis.hashCode());
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		return result;
 	}
 
 	/**

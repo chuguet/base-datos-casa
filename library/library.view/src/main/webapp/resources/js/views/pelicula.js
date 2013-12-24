@@ -89,6 +89,28 @@ var pelicula = {
 			});
 		});
 		$("#btnEliminar").button("disable");
+		
+		//Se añade evento para la busqueda
+		generic.get('pelicula/generos',null,function(){
+			$( "#genero" ).autocomplete({
+			      source: arguments[0]
+			});
+		});
+		$(".text").keyup(function(){
+			var titulo = $("input[id=titulo]").val();
+			var director = $("input[id=director]").val();
+			var interpretes = $("input[id=interpretes]").val();
+			var distribuidora = $("input[id=distribuidora]").val();
+			var genero = $("input[id=genero]").val();
+			var data = {
+					titulo : titulo,
+					director : director,
+					interpretes : interpretes,
+					distribuidora : distribuidora,
+					genero : genero,
+			};
+			generic.get('pelicula/busqueda',data,generic.showInformation);
+		});
 	},
 
 	'formatForm' : function() {
@@ -218,16 +240,6 @@ var pelicula = {
 				generic.getList('pelicula');
 			});
 		};
-	},
-	'buscar' : function(nombre, apellidos) {
-		var data = {
-				titulo : titulo,
-				director : director,
-				interpretes : interpretes,
-				distribuidora : distribuidora,
-				genero : genero
-			};
-			generic.get('pelicula/busqueda',data,generic.showInformation);
 	}
 };
 
@@ -245,4 +257,4 @@ function createMenu(id, nombre, elementos){
 	});
 	menu += "</ul></li></ul>";
 	return menu;
-}
+};

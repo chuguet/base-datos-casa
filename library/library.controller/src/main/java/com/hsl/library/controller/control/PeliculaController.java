@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hsl.library.controller.dto.BusquedaDTO;
 import com.hsl.library.controller.dto.MensajeDTO;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
@@ -65,85 +67,78 @@ public class PeliculaController {
 		}
 		return new StringBuffer("pelicula/").append(operacion).toString();
 	}
-	
-	@RequestMapping(value = "/generos", method = RequestMethod.GET)
-	public @ResponseBody List<String> getGeneros() {
-		List<String> result = new ArrayList<String>();
-		for(Genero genero : Genero.values()){
-			result.add(genero.getNameId());
+
+	/**
+	 * Filtrar peliculas.
+	 * 
+	 * @param peliculas
+	 *            the peliculas
+	 * @param busqueda
+	 *            the busqueda
+	 * @return the list
+	 */
+	private List<Pelicula> filtrarPeliculas(List<Pelicula> peliculas,
+			BusquedaDTO busqueda) {
+		List<Pelicula> result = new ArrayList<Pelicula>();
+		for (Pelicula pelicula : peliculas) {
+			if (peliculasSimilares(pelicula, busqueda)
+					&& !result.contains(pelicula)) {
+				result.add(pelicula);
+			}
 		}
 		return result;
 	}
-	
-	@RequestMapping(value = "/formatos", method = RequestMethod.GET)
-	public @ResponseBody List<String> getFormatos() {
-		List<String> result = new ArrayList<String>();
-		for(Formato formato : Formato.values()){
-			result.add(formato.getNameId());
-		}
-		return result;
-	}
-	
+
+	/**
+	 * Gets the calificaciones.
+	 * 
+	 * @return the calificaciones
+	 */
 	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
-	public @ResponseBody List<String> getCalificaciones() {
+	public @ResponseBody
+	List<String> getCalificaciones() {
 		List<String> result = new ArrayList<String>();
-		for(Calificacion calificacion : Calificacion.values()){
+		for (Calificacion calificacion : Calificacion.values()) {
 			result.add(calificacion.getNameId());
 		}
 		return result;
 	}
 
-//	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)
-//	public @ResponseBody
-//	List<PeliculaDTO> listAllFilter(
-//			@RequestParam(value = "nombre") String nombre,
-//			@RequestParam(value = "apellidos") String apellidos) {
-//		List<PeliculaDTO> result = new ArrayList<PeliculaDTO>();
-//		try {
-//			BusquedaDTO busquedaDTO = new BusquedaDTO(nombre, apellidos);
-//			List<Pelicula> Peliculas;
-//			Peliculas = this.peliculaService.findAll();
-//			if (busquedaDTO.isEmpty()) {
-//				for (Pelicula Pelicula : Peliculas) {
-//					PeliculaDTO PeliculaDTO = new PeliculaDTO();
-//					PeliculaDTO = this.peliculaUtilDTO.toRest(Pelicula);
-//					result.add(PeliculaDTO);
-//				}
-//			} else {
-//				List<Pelicula> PeliculasFiltrados = filtrarPeliculas(Peliculas,
-//						busquedaDTO);
-//				for (Pelicula Pelicula : PeliculasFiltrados) {
-//					PeliculaDTO porraDTO = new PeliculaDTO();
-//					porraDTO = this.peliculaUtilDTO.toRest(Pelicula);
-//					result.add(porraDTO);
-//				}
-//			}
-//		} catch (DatabaseRetrieveException e) {
-//			LOG.error(e.getMessage());
-//		}
-//		return result;
-//	}
-//
-//	private List<Pelicula> filtrarPeliculas(List<Pelicula> Peliculas,
-//			BusquedaDTO busqueda) {
-//		List<Pelicula> result = new ArrayList<Pelicula>();
-//		for (Pelicula Pelicula : Peliculas) {
-//			if (Pelicula.getNombre().toUpperCase()
-//					.contains(busqueda.getNombre().toUpperCase())
-//					&& Pelicula.getApellidos().toUpperCase()
-//							.contains(busqueda.getApellidos().toUpperCase())
-//					&& !result.contains(Pelicula)) {
-//				result.add(Pelicula);
-//			}
-//		}
-//		return result;
-//	}
+	/**
+	 * Gets the formatos.
+	 * 
+	 * @return the formatos
+	 */
+	@RequestMapping(value = "/formatos", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getFormatos() {
+		List<String> result = new ArrayList<String>();
+		for (Formato formato : Formato.values()) {
+			result.add(formato.getNameId());
+		}
+		return result;
+	}
+
+	/**
+	 * Gets the generos.
+	 * 
+	 * @return the generos
+	 */
+	@RequestMapping(value = "/generos", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getGeneros() {
+		List<String> result = new ArrayList<String>();
+		for (Genero genero : Genero.values()) {
+			result.add(genero.getNameId());
+		}
+		return result;
+	}
 
 	/**
 	 * Insert.
 	 * 
-	 * @param PeliculaDTO
-	 *            the Pelicula dto
+	 * @param peliculaDTO
+	 *            the pelicula dto
 	 * @return the mensaje dto
 	 */
 	@RequestMapping(method = RequestMethod.POST)
@@ -188,6 +183,78 @@ public class PeliculaController {
 			LOG.error(e.getMessage());
 		}
 		return peliculasDTO;
+	}
+
+	/**
+	 * List all filter.
+	 * 
+	 * @param titulo
+	 *            the titulo
+	 * @param director
+	 *            the director
+	 * @param interpretes
+	 *            the interpretes
+	 * @param distribuidora
+	 *            the distribuidora
+	 * @param genero
+	 *            the genero
+	 * @return the list
+	 */
+	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)
+	public @ResponseBody
+	List<PeliculaDTO> listAllFilter(
+			@RequestParam(value = "titulo") String titulo,
+			@RequestParam(value = "director") String director,
+			@RequestParam(value = "interpretes") String interpretes,
+			@RequestParam(value = "distribuidora") String distribuidora,
+			@RequestParam(value = "genero") String genero) {
+		List<PeliculaDTO> result = new ArrayList<PeliculaDTO>();
+		try {
+			BusquedaDTO busquedaDTO = new BusquedaDTO(titulo, director,
+					interpretes, distribuidora, genero);
+			List<Pelicula> peliculas;
+			peliculas = this.peliculaService.findAll();
+			if (busquedaDTO.isEmpty()) {
+				for (Pelicula pelicula : peliculas) {
+					PeliculaDTO peliculaDTO = new PeliculaDTO();
+					peliculaDTO = this.peliculaUtilDTO.toRest(pelicula);
+					result.add(peliculaDTO);
+				}
+			} else {
+				List<Pelicula> peliculasFiltrados = filtrarPeliculas(peliculas,
+						busquedaDTO);
+				for (Pelicula pelicula : peliculasFiltrados) {
+					PeliculaDTO peliculaDTO = new PeliculaDTO();
+					peliculaDTO = this.peliculaUtilDTO.toRest(pelicula);
+					result.add(peliculaDTO);
+				}
+			}
+		} catch (DatabaseRetrieveException e) {
+			LOG.error(e.getMessage());
+		}
+		return result;
+	}
+
+	/**
+	 * Peliculas similares.
+	 * 
+	 * @param pelicula
+	 *            the pelicula
+	 * @param busqueda
+	 *            the busqueda
+	 * @return the boolean
+	 */
+	private Boolean peliculasSimilares(Pelicula pelicula, BusquedaDTO busqueda) {
+		return pelicula.getDirector().toUpperCase()
+				.contains(busqueda.getDirector().toUpperCase())
+				&& pelicula.getDistribuidora().toUpperCase()
+						.contains(busqueda.getDistribuidora().toUpperCase())
+				&& pelicula.getInterpretes().toUpperCase()
+						.contains(busqueda.getInterpretes().toUpperCase())
+				&& pelicula.getTitulo().toUpperCase()
+						.contains(busqueda.getTitulo().toUpperCase())
+				&& pelicula.getGenero().getNameId().toUpperCase()
+						.contains(busqueda.getGenero().toUpperCase());
 	}
 
 	/**
@@ -239,8 +306,8 @@ public class PeliculaController {
 	/**
 	 * Update.
 	 * 
-	 * @param PeliculaDTO
-	 *            the Pelicula dto
+	 * @param peliculaDTO
+	 *            the pelicula dto
 	 * @return the mensaje dto
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
