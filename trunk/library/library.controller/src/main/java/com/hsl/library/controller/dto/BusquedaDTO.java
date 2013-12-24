@@ -6,47 +6,95 @@ package com.hsl.library.controller.dto;
  */
 public class BusquedaDTO {
 
-	/** The apellidos. */
-	private String apellidos;
+	/** The director. */
+	private String director;
 
-	/** The nombre. */
-	private String nombre;
+	/** The distribuidora. */
+	private String distribuidora;
+
+	/** The genero. */
+	private String genero;
+
+	/** The interpretes. */
+	private String interpretes;
+
+	/** The titulo. */
+	private String titulo;
 
 	/**
 	 * Instantiates a new busqueda dto.
 	 */
 	public BusquedaDTO() {
+
 	}
 
 	/**
 	 * Instantiates a new busqueda dto.
 	 * 
-	 * @param nombre
-	 *            the nombre
-	 * @param apellidos
-	 *            the apellidos
+	 * @param titulo
+	 *            the titulo
+	 * @param director
+	 *            the director
+	 * @param interpretes
+	 *            the interpretes
+	 * @param distribuidora
+	 *            the distribuidora
+	 * @param genero
+	 *            the genero
 	 */
-	public BusquedaDTO(String nombre, String apellidos) {
-		this.setNombre(nombre);
-		this.setApellidos(apellidos);
+	public BusquedaDTO(String titulo, String director, String interpretes,
+			String distribuidora, String genero) {
+		super();
+		this.titulo = titulo;
+		this.director = director;
+		this.interpretes = interpretes;
+		this.distribuidora = distribuidora;
+		this.genero = genero;
 	}
 
 	/**
-	 * Gets the apellidos.
+	 * Gets the director.
 	 * 
-	 * @return the apellidos
+	 * @return the director
 	 */
-	public String getApellidos() {
-		return apellidos;
+	public String getDirector() {
+		return director;
 	}
 
 	/**
-	 * Gets the nombre.
+	 * Gets the distribuidora.
 	 * 
-	 * @return the nombre
+	 * @return the distribuidora
 	 */
-	public String getNombre() {
-		return nombre;
+	public String getDistribuidora() {
+		return distribuidora;
+	}
+
+	/**
+	 * Gets the genero.
+	 * 
+	 * @return the genero
+	 */
+	public String getGenero() {
+		return genero;
+	}
+
+	/**
+	 * Gets the interpretes.
+	 * 
+	 * @return the interpretes
+	 */
+	public String getInterpretes() {
+		return interpretes;
+	}
+
+	/**
+	 * Gets the titulo.
+	 * 
+	 * @return the titulo
+	 */
+	public String getTitulo() {
+		return titulo;
 	}
 
 	/**
@@ -55,26 +103,59 @@ public class BusquedaDTO {
 	 * @return the boolean
 	 */
 	public Boolean isEmpty() {
-		return nombre.isEmpty() && apellidos.isEmpty();
+		return this.director.isEmpty() && this.distribuidora.isEmpty()
+				&& this.genero.isEmpty() && this.interpretes.isEmpty()
+				&& this.titulo.isEmpty();
 	}
 
 	/**
-	 * Sets the apellidos.
+	 * Sets the director.
 	 * 
-	 * @param apellidos
-	 *            the new apellidos
+	 * @param director
+	 *            the new director
 	 */
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setDirector(String director) {
+		this.director = director;
 	}
 
 	/**
-	 * Sets the nombre.
+	 * Sets the distribuidora.
 	 * 
-	 * @param nombre
-	 *            the new nombre
+	 * @param distribuidora
+	 *            the new distribuidora
 	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDistribuidora(String distribuidora) {
+		this.distribuidora = distribuidora;
 	}
+
+	/**
+	 * Sets the genero.
+	 * 
+	 * @param genero
+	 *            the new genero
+	 */
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	/**
+	 * Sets the interpretes.
+	 * 
+	 * @param interpretes
+	 *            the new interpretes
+	 */
+	public void setInterpretes(String interpretes) {
+		this.interpretes = interpretes;
+	}
+
+	/**
+	 * Sets the titulo.
+	 * 
+	 * @param titulo
+	 *            the new titulo
+	 */
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
 }

@@ -8,15 +8,15 @@
 		<div class="buscador">
 			<p>
 				<label for="titulo">T&iacute;tulo:</label> 
-				<input id="titulo" onkeyup="pelicula.buscar($('input[id=nombre]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="titulo" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="director">Director:</label>
-				<input id="director" onkeyup="pelicula.buscar($('input[id=nombre]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" /> 
+				<input id="director"type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" /> 
 				<label for="interpretes">Int&eacute;rpretes:</label>
-				<input id="interpretes" onkeyup="pelicula.buscar($('input[id=nombre]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="interpretes" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="distribuidora">Distribuidora:</label>
-				<input id="distribuidora" onkeyup="pelicula.buscar($('input[id=distribuidora]').val(),$('input[id=apellidos]').val())" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="distribuidora" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="genero">G&eacute;nero:</label>
-				<input id="genero" onkeyup="pelicula.buscar($('input[id=genero]').val(),$('input[id=apellidos]').val())" type="textbox" readonly="true" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="genero" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
 		</div>
 	</fieldset>
