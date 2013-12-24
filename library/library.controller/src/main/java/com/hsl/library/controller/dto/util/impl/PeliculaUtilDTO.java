@@ -33,20 +33,20 @@ public class PeliculaUtilDTO implements IPeliculaUtilDTO {
 	@Override
 	public Pelicula toBusiness(PeliculaDTO peliculaDTO) throws ParseException {
 		Pelicula pelicula = new Pelicula();
-		pelicula.setCalificacion(Calificacion.valueOf(peliculaDTO
+		pelicula.setCalificacion(Calificacion.getValue(peliculaDTO
 				.getCalificacion()));
 		pelicula.setDirector(peliculaDTO.getDirector());
 		pelicula.setDistribuidora(peliculaDTO.getDistribuidora());
 		pelicula.setDuracion(peliculaDTO.getDuracion());
 		pelicula.setFechaEstreno(DATE_FORMATTER.parse(peliculaDTO
 				.getFechaEstreno()));
-		pelicula.setGenero(Genero.valueOf(peliculaDTO.getGenero()));
+		pelicula.setGenero(Genero.getValue(peliculaDTO.getGenero()));
 		pelicula.setId(peliculaDTO.getId());
 		pelicula.setInterpretes(peliculaDTO.getInterpretes());
 		pelicula.setNacionalidad(peliculaDTO.getNacionalidad());
 		pelicula.setSinopsis(peliculaDTO.getSinopsis());
 		pelicula.setTitulo(peliculaDTO.getTitulo());
-		pelicula.setFormato(Formato.valueOf(peliculaDTO.getFormato()));
+		pelicula.setFormato(Formato.getValue(peliculaDTO.getFormato()));
 		return pelicula;
 	}
 
@@ -66,13 +66,13 @@ public class PeliculaUtilDTO implements IPeliculaUtilDTO {
 		peliculaDTO.setDuracion(pelicula.getDuracion());
 		peliculaDTO.setFechaEstreno(DATE_FORMATTER.format(pelicula
 				.getFechaEstreno()));
-		peliculaDTO.setGenero(pelicula.getGenero().getGenero());
+		peliculaDTO.setGenero(pelicula.getGenero().getNameId());
 		peliculaDTO.setId(pelicula.getId());
 		peliculaDTO.setInterpretes(pelicula.getInterpretes());
 		peliculaDTO.setNacionalidad(pelicula.getNacionalidad());
 		peliculaDTO.setSinopsis(pelicula.getSinopsis());
 		peliculaDTO.setTitulo(pelicula.getTitulo());
-		peliculaDTO.setFormato(pelicula.getFormato().getFormato());
+		peliculaDTO.setFormato(pelicula.getFormato().getNameId());
 		return peliculaDTO;
 	}
 
