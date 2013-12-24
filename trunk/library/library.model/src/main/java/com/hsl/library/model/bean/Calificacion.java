@@ -6,52 +6,55 @@ package com.hsl.library.model.bean;
  */
 public enum Calificacion {
 
-	/** The tp. */
-	TP("TP", "Todos los públicos"),
-
 	/** The M13. */
-	M13("M13", "Menores de 13 años"),
+	M13("Menores de 13 años"),
 
 	/** The M18. */
-	M18("M18", "Menores de 18 años"),
+	M18("Menores de 18 años"),
 
 	/** The M7. */
-	M7("M7", "Menores de 7 años");
+	M7("Menores de 7 años"),
 
-	/** The name id. */
+	/** The tp. */
+	TP("Todos los públicos");
+
+	/**
+	 * Gets the value.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the value
+	 */
+	public static Calificacion getValue(String value) {
+		Calificacion result = null;
+		for (Calificacion calificacion : Calificacion.values()) {
+			if (calificacion.getNameId().equals(value)) {
+				result = calificacion;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/** The nameId. */
 	private String nameId;
-
-	/** The calificacion. */
-	private String calificacion;
 
 	/**
 	 * Instantiates a new calificacion.
 	 * 
-	 * @param calificacion
-	 *            the calificacion
 	 * @param nameId
 	 *            the name id
 	 */
-	private Calificacion(String calificacion, String nameId) {
+	private Calificacion(String nameId) {
 		this.nameId = nameId;
-		this.calificacion = calificacion;
 	}
 
 	/**
-	 * Gets the name id.
+	 * Gets the nameId.
 	 * 
-	 * @return the name id
+	 * @return the nameId
 	 */
 	public String getNameId() {
 		return this.nameId;
-	}
-
-	/**
-	 * Gets the calificacion.
-	 * 
-	 * @return the calificacion
-	 */
-	public String getCalificacion() {
-		return this.calificacion;
 	}
 }

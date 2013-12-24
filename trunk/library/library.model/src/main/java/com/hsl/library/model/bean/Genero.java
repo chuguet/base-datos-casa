@@ -6,73 +6,94 @@ package com.hsl.library.model.bean;
  */
 public enum Genero {
 
-	/** The drama. */
-	DRAMA("Drama"),
-
-	/** The comedia. */
-	COMEDIA("Comedia"),
-
 	/** The accion. */
 	ACCION("Acción"),
 
 	/** The aventura. */
 	AVENTURA("Aventura"),
 
-	/** The terror. */
-	TERROR("Terror"),
-
-	/** The ciencia ficcion. */
-	CIENCIA_FICCION("Ciencia Ficción"),
-
-	/** The romantico. */
-	ROMANTICO("Romantico"),
-
-	/** The musical. */
-	MUSICAL("Musical"),
-
-	/** The melodrama. */
-	MELODRAMA("Melodrama"),
+	/** The belico. */
+	BELICO("Bélico"),
 
 	/** The catastrofe. */
 	CATASTROFE("Catástrofe"),
+	
+	/** The ciencia ficcion. */
+	CIENCIA_FICCION("Ciencia Ficción"),
 
-	/** The suspense. */
-	SUSPENSE("Suspense"),
+	/** The comedia. */
+	COMEDIA("Comedia"),
 
-	/** The fantasia. */
-	FANTASIA("Fantasía"),
-
-	/** The pornografia. */
-	PORNOGRAFIA("Pornografía"),
+	/** The dibujos. */
+	DIBUJOS("Dibujos"),
+	
+	/** The drama. */
+	DRAMA("Drama"),
 
 	/** The explotacion. */
 	EXPLOTACION("Explotación"),
 
-	/** The belico. */
-	BELICO("Bélico"),
+	/** The fantasia. */
+	FANTASIA("Fantasía"),
+
+	/** The melodrama. */
+	MELODRAMA("Melodrama"),
+
+	/** The musical. */
+	MUSICAL("Musical"),
 
 	/** The otros. */
-	OTROS("Otros");
+	OTROS("Otros"),
 
-	/** The genero. */
-	private String genero;
+	/** The pornografia. */
+	PORNOGRAFIA("Pornografía"),
+
+	/** The romantico. */
+	ROMANTICO("Romantico"),
+
+	/** The suspense. */
+	SUSPENSE("Suspense"),
+
+	/** The terror. */
+	TERROR("Terror");
 
 	/**
-	 * Instantiates a new genero.
+	 * Gets the value.
 	 * 
-	 * @param genero
-	 *            the genero
+	 * @param value
+	 *            the value
+	 * @return the value
 	 */
-	private Genero(String genero) {
-		this.genero = genero;
+	public static Genero getValue(String value) {
+		Genero result = null;
+		for (Genero genero : Genero.values()) {
+			if (genero.getNameId().equals(value)) {
+				result = genero;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/** The nameId. */
+	private String nameId;
+
+	/**
+	 * Instantiates a new nameId.
+	 * 
+	 * @param nameId
+	 *            the nameId
+	 */
+	private Genero(String nameId) {
+		this.nameId = nameId;
 	}
 
 	/**
-	 * Gets the genero.
+	 * Gets the nameId.
 	 * 
-	 * @return the genero
+	 * @return the nameId
 	 */
-	public String getGenero() {
-		return this.genero;
+	public String getNameId() {
+		return this.nameId;
 	}
 }

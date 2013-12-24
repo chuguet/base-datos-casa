@@ -120,6 +120,33 @@ var pelicula = {
         		changeYear: true,
         };
 		$("#fechaEstreno").datepicker(datePickerParams);
+		
+		generic.get('pelicula/calificaciones',null,function(){
+			var menu = createMenu("menuDesplegableCalificaciones", "Seleccionar calificaci&oacute;n", arguments[0]);
+			$("#bloqueCalificacion").append(menu);
+			$("#menuDesplegableCalificaciones").menu();
+			$("#menuDesplegableCalificaciones li ul li").click(function(event){
+					  $("#calificacion").val(event.target.text);
+			});
+		});
+		
+		generic.get('pelicula/generos',null,function(){
+			var menu = createMenu("menuDesplegableGeneros", "Seleccionar g&eacute;nero", arguments[0]);
+			$("#bloqueGenero").append(menu);
+			$("#menuDesplegableGeneros").menu();
+			$("#menuDesplegableGeneros li ul li").click(function(event){
+				  $("#genero").val(event.target.text);
+			});
+		});
+		
+		generic.get('pelicula/formatos',null,function(){
+			var menu = createMenu("menuDesplegableFormatos", "Seleccionar formato", arguments[0]);
+			$("#bloqueFormato").append(menu);
+			$("#menuDesplegableFormatos").menu();
+			$("#menuDesplegableFormatos li ul li").click(function(event){
+				  $("#formato").val(event.target.text);
+			});
+		});
 	},
 	'getParams' : function() {
 		var id = ($("#id").val()) ? $("#id").val() : null;
@@ -128,6 +155,8 @@ var pelicula = {
 		var fechaEstreno = $("input[id=fechaEstreno]").val();
 		var distribuidora = $("input[id=distribuidora]").val();
 		var duracion = $("input[id=duracion]").val();
+		var nacionalidad = $("input[id=nacionalidad]").val();
+		var calificacion = $("input[id=calificacion]").val();
 		var genero = $("input[id=genero]").val();
 		var formato = $("input[id=formato]").val();
 		var interpretes = $("#interpretes").val();
@@ -147,6 +176,12 @@ var pelicula = {
 		}
 		if (duracion == '' || !isNumber(duracion)) {
 			errores += '- Debe introducir una duraci&oacute;n correcta<br/>';
+		}
+		if (nacionalidad == '') {
+			errores += '- Debe introducir la nacionalidad de la pel&iacute;cula<br/>';
+		}
+		if (calificacion == '') {
+			errores += '- Debe introducir la calificaci&oacute;n de la pel&iacute;cula<br/>';
 		}
 		if (genero == '') {
 			errores += '- Debe introducir el g&eacute;nero de la pel&iacute;cula<br/>';
@@ -171,6 +206,8 @@ var pelicula = {
 				fechaEstreno : fechaEstreno,
 				distribuidora : distribuidora,
 				duracion : duracion,
+				nacionalidad : nacionalidad,
+				calificacion : calificacion,
 				genero : genero,
 				formato : formato,
 				interpretes : interpretes,
@@ -193,6 +230,19 @@ var pelicula = {
 			generic.get('pelicula/busqueda',data,generic.showInformation);
 	}
 };
+
 function isNumber(n) {
 	  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function createMenu(id, nombre, elementos){
+	var submenu;
+	var menu;
+	menu = "<ul style='width:220px;' id='"+id+"'><li><a href='#'>"+nombre+"</a><ul>";
+	elementos.forEach(function(elemento) {
+		submenu = "<li><a href='#'>"+elemento+"</a></li>";
+		menu += submenu;
+	});
+	menu += "</ul></li></ul>";
+	return menu;
 }

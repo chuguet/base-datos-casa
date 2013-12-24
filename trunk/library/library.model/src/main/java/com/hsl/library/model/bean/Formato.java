@@ -6,34 +6,52 @@ package com.hsl.library.model.bean;
  */
 public enum Formato {
 
-	/** The vhs. */
-	VHS("VHS"),
+	/** The blue ray. */
+	BLUE_RAY("BLUE-RAY"),
 
 	/** The dvd. */
 	DVD("DVD"),
 
-	/** The blue ray. */
-	BLUE_RAY("BLUE-RAY");
-
-	/** The formato. */
-	private String formato;
+	/** The vhs. */
+	VHS("VHS");
 
 	/**
-	 * Instantiates a new formato.
+	 * Gets the value.
 	 * 
-	 * @param formato
-	 *            the formato
+	 * @param value
+	 *            the value
+	 * @return the value
 	 */
-	private Formato(String formato) {
-		this.formato = formato;
+	public static Formato getValue(String value) {
+		Formato result = null;
+		for (Formato formato : Formato.values()) {
+			if (formato.getNameId().equals(value)) {
+				result = formato;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/** The nameId. */
+	private String nameId;
+
+	/**
+	 * Instantiates a new nameId.
+	 * 
+	 * @param nameId
+	 *            the nameId
+	 */
+	private Formato(String nameId) {
+		this.nameId = nameId;
 	}
 
 	/**
-	 * Gets the formato.
+	 * Gets the nameId.
 	 * 
-	 * @return the formato
+	 * @return the nameId
 	 */
-	public String getFormato() {
-		return this.formato;
+	public String getNameId() {
+		return this.nameId;
 	}
 }

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hsl.library.controller.dto.MensajeDTO;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
+import com.hsl.library.model.bean.Calificacion;
+import com.hsl.library.model.bean.Formato;
 import com.hsl.library.model.bean.Genero;
 import com.hsl.library.model.bean.Pelicula;
 import com.hsl.library.model.exception.DatabaseDeleteException;
@@ -68,7 +70,25 @@ public class PeliculaController {
 	public @ResponseBody List<String> getGeneros() {
 		List<String> result = new ArrayList<String>();
 		for(Genero genero : Genero.values()){
-			result.add(genero.getGenero());
+			result.add(genero.getNameId());
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/formatos", method = RequestMethod.GET)
+	public @ResponseBody List<String> getFormatos() {
+		List<String> result = new ArrayList<String>();
+		for(Formato formato : Formato.values()){
+			result.add(formato.getNameId());
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
+	public @ResponseBody List<String> getCalificaciones() {
+		List<String> result = new ArrayList<String>();
+		for(Calificacion calificacion : Calificacion.values()){
+			result.add(calificacion.getNameId());
 		}
 		return result;
 	}

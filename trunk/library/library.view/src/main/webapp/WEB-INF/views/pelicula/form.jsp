@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <style>
-	.table{display:inline-block; vertical-align:top;}
+	.table{display:inline-block; vertical-align:top; padding-left:35px; padding-right:35px;}
   	textarea{vertical-align: top; display:block;}
-  	input{vertical-align: top; display:block;} 
+  	input{vertical-align: top; display:block;}
 </style>
 <script type="text/javascript">
 	pelicula.formatForm();
@@ -14,12 +14,15 @@
 			$('input[id=id]').val(pelicula.id);
 			$('input[id=titulo]').val(pelicula.titulo);
 			$('input[id=director]').val(pelicula.director);
-			$('input[id=genero]').val(pelicula.genero);
 			$('input[id=fechaEstreno]').val(pelicula.fechaEstreno);
-			$('input[id=interpretes]').val(pelicula.interpretes);
 			$('input[id=distribuidora]').val(pelicula.distribuidora);
-			$('input[id=formato]').val(pelicula.formato);
 			$('input[id=duracion]').val(pelicula.duracion);
+			$('input[id=nacionalidad]').val(pelicula.nacionalidad);
+			$('input[id=calificacion]').val(pelicula.calificacion);
+			$('input[id=genero]').val(pelicula.genero);
+			$('input[id=formato]').val(pelicula.formato);
+			$('input[id=interpretes]').val(pelicula.interpretes);
+			$('#interpretes').val(pelicula.interpretes);
 			$('#sinopsis').val(pelicula.sinopsis);
 		};
 	</c:if>
@@ -54,25 +57,33 @@
 				<label for="duracion">Duraci&oacute;n</label>
 				<input id="duracion" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
+			<p>
+				<label for="nacionalidad">Nacionalidad</label>
+				<input id="nacionalidad" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
 		</div>
 		<div class="table">
-			<p>
+			<p id="bloqueCalificacion">
+				<label for="calificacion">Calificaci&oacute;n</label>
+				<input id="calificacion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+			</p>
+			<p id="bloqueGenero">
 				<label for="genero">G&eacute;nero</label>
-				<input id="genero" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="genero" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
-			<p>
+			<p id="bloqueFormato">
 				<label for="formato">Formato</label>
-				<input id="formato" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="formato" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
+		</div>
+		<div class="table">
 			<p>
 				<label for="interpretes">Int&eacute;rpretes</label>
-				<textarea id="interpretes" cols="50" rows="7" class="text ui-widget-content ui-corner-all" />
+				<textarea id="interpretes" cols="50" rows="4" class="text ui-widget-content ui-corner-all" />
 			</p>
-		</div>
-		<div class="table">
 			<p>
 				<label for="sinopsis">Sinopsis</label>
-				<textarea id="sinopsis" cols="50" rows="14" class="text ui-widget-content ui-corner-all" />
+				<textarea id="sinopsis" cols="50" rows="9" class="text ui-widget-content ui-corner-all" />
 			</p>
 		</div>
 		<div class="botonera">
