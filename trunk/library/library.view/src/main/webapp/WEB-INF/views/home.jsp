@@ -5,9 +5,9 @@
 <html>
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Tracing Nutricional Coach</title>
+		<title>Biblioteca filmoteca casa</title>
 		
 		<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
@@ -24,16 +24,13 @@
 		
 		<script src="resources/js/views/usuario.js" type="text/javascript"></script>
 		<script src="resources/js/views/pelicula.js" type="text/javascript"></script>
-		
-		<script type="text/javascript">
-			generic.resizeEvent();
-		</script>
+
 	</head>
 	<body class="web" >
 		
 		<div id="header">
 			<div id="titulo">
-				<h1>Tracing Nutricional Coach</h1>
+				<h1>Biblioteca filmoteca casa</h1>
 			</div>
 			<div id="fecha">
 				<h3>Hoy es ${fecha}</h3>

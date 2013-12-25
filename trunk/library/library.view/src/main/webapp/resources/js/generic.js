@@ -72,7 +72,7 @@ var generic = {
 		}
 		$.ajaxSetup({
 			headers : {
-				"Content-Type" : 'application/json',
+				"Content-Type" : 'application/json; charset=UTF-8',
 				"Accept" : 'application/json'
 			}
 		});
@@ -128,8 +128,8 @@ var generic = {
 		$("body").addClass("loading");
 		$.ajaxSetup({
 			headers : {
-				"Content-Type" : 'text/html;charset=UTF-8',
-				"Accept" : 'text/html;charset=UTF-8'
+				"Content-Type" : 'text/html; charset=UTF-8',
+				"Accept" : 'text/html; charset=UTF-8'
 			}
 		});
 		$.ajax({
@@ -171,27 +171,5 @@ var generic = {
 	'showInformation' : function() {
 		var information = arguments[0];
 		showInformationIntoView(information);
-	},
-	'preloadNecessaryFiles' : function() {
-		if (!jQuery.browser.mobile) {
-			require([ "resources/js/mobile/jquery.mobile-1.2.0.min",
-					"resources/js/mobile/jquery.mobile.jqGrid.min" ]);
-		} else {
-			require([ "", "resources/js/jquery.jqGrid.min" ]);
-		}
-	},
-	'resizeEvent' : function() {
-		$(window).resize(function() {
-			generic.resizeContent();
-		});
-		this.resizeContent();
-	},
-	'resizeContent' : function() {
-		var bodyHeight = $('body').height();
-		$('#content').height(bodyHeight - 103);
-	},
-	'goHome' : function() {
-		$('#content').html(
-				'<img src="resources/imgs/copa.png" alt="imagenes"/>');
 	}
 };
