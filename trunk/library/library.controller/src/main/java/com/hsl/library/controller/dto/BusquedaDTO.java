@@ -1,10 +1,18 @@
 package com.hsl.library.controller.dto;
 
+import java.nio.charset.Charset;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class BusquedaDTO.
  */
 public class BusquedaDTO {
+
+	/** The Constant ISO_8859_1. */
+	public static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
+
+	/** The Constant UTF_8. */
+	public static final Charset UTF_8 = Charset.forName("UTF-8");
 
 	/** The director. */
 	private String director;
@@ -45,11 +53,22 @@ public class BusquedaDTO {
 	public BusquedaDTO(String titulo, String director, String interpretes,
 			String distribuidora, String genero) {
 		super();
-		this.titulo = titulo;
-		this.director = director;
-		this.interpretes = interpretes;
-		this.distribuidora = distribuidora;
-		this.genero = genero;
+		this.genero = enconding(genero);
+		this.titulo = enconding(titulo);
+		this.director = enconding(director);
+		this.interpretes = enconding(interpretes);
+		this.distribuidora = enconding(distribuidora);
+	}
+
+	/**
+	 * Enconding.
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the string
+	 */
+	private String enconding(String value) {
+		return new String(value.getBytes(ISO_8859_1), UTF_8);
 	}
 
 	/**
