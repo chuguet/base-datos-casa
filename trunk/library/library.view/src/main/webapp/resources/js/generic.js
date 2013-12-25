@@ -26,6 +26,12 @@ var generic = {
 			this.executeHtml('GET', action, null);
 		}
 	},
+	"getDetail" : function(entity, item) {
+		var action = entity + '/form/detail';
+		this.executeHtml('GET', action, function() {
+			generic.get(entity, item, generic.showInformation);
+		});
+	},
 	"get" : function(entity, item, callback) {
 		var action = entity;
 		if (item && item != null) {
