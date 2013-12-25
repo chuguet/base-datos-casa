@@ -62,7 +62,7 @@ public class PeliculaController {
 	public String createForm(@PathVariable("operacion") String operacion,
 			final Model uiModel) {
 		uiModel.addAttribute("operacion", operacion);
-		if (!operacion.equals("list")) {
+		if (!operacion.equals("list") && !operacion.equals("detail")) {
 			operacion = "form";
 		}
 		return new StringBuffer("pelicula/").append(operacion).toString();

@@ -62,6 +62,7 @@ var pelicula = {
 			rownumbers : false,
 			scroll : false,
 			onSelectRow : function(rowid, status) {
+				$("#btnVerFicha").button("enable");
 				$("#btnEditar").button("enable");
 				$("#btnEliminar").button("enable");
 				pelicula.rowID = rowid;
@@ -82,6 +83,10 @@ var pelicula = {
 			generic.getForm('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
 		});
 		$("#btnEditar").button("disable");
+		$("#btnVerFicha").button().click(function() {
+			generic.getDetail('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
+		});
+		$("#btnVerFicha").button("disable");
 
 		$("#btnEliminar").button().click(function() {
 			generic.delete('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id, function() {
