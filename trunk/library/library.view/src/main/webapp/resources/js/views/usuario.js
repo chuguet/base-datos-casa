@@ -1,7 +1,6 @@
 var usuario = {
 	'rowID' : null,
 	'formatList' : function() {
-		
 		$("#lista").jqGrid({
 			datatype : 'local',
 			data : [],
@@ -92,10 +91,6 @@ var usuario = {
 	},
 
 	'formatForm' : function() {
-		$(window).bind('resize', function() {
-			$('#lista').setGridWidth($('.ui-jqgrid').parent().innerWidth() - 30);
-		}).trigger('resize');
-		
 		$("#btnCancel").button().click(function() {
 			generic.getList('usuario');
 		});

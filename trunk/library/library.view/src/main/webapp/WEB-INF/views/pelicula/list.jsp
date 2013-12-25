@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <script type="text/javascript">
 	pelicula.formatList();
@@ -34,10 +35,14 @@
 		</div>
 	</fieldset>
 	<div class="botonera">
-		<input type="button" id="btnAlta" value="Alta" />
-		<input type="button" id="btnEditar" value="Editar" />
+		<sec:authorize ifAnyGranted="ROLE_ADMIN">
+			<input type="button" id="btnAlta" value="Alta" />
+			<input type="button" id="btnEditar" value="Editar" />
+		</sec:authorize>
 		<input type="button" id="btnVerFicha" value="Ver ficha" />
-		<input type="button" id="btnEliminar" value="Eliminar" />
+		<sec:authorize ifAnyGranted="ROLE_ADMIN">
+			<input type="button" id="btnEliminar" value="Eliminar" />
+		</sec:authorize>
 	</div>
 	<table id="lista"></table>
 	<div id=paginadorLista></div>

@@ -11,7 +11,7 @@
 </style>
 
 <script type="text/javascript">
-	pelicula.formatForm();
+	pelicula.formatDetail();
 	function showInformationIntoView(pelicula){
 		$('h2').text(pelicula.titulo);
 		$('input[id=id]').val(pelicula.id);
