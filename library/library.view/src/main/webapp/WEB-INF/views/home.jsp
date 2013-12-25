@@ -43,8 +43,8 @@
 		<div id="menu">
 			<sec:authorize ifAnyGranted="ROLE_ADMIN">
 				<a href="javascript:void" onclick="javascript:generic.getList('usuario');" title="Ver usuarios" class="itemMenu">Usuarios</a>
-				<a href="javascript:void" onclick="javascript:generic.getList('pelicula');" title="Ver peliculas" class="itemMenu">Pel&iacute;culas</a>
 			</sec:authorize>
+			<a href="javascript:void" onclick="javascript:generic.getList('pelicula');" title="Ver peliculas" class="itemMenu">Pel&iacute;culas</a>
 			<div id="usuario">
 				<span id="nombreUsuario"><b>Usuario :</b> ${nombre} ${apellidos}</span> 
 				<a href="<c:url value="/home" />" id="btnHome" title="Home"></a>

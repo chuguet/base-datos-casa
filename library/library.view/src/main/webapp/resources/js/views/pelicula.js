@@ -1,7 +1,6 @@
 var pelicula = {
 	'rowID' : null,
 	'formatList' : function() {
-		
 		$("#lista").jqGrid({
 			datatype : 'local',
 			data : [],
@@ -79,10 +78,12 @@ var pelicula = {
 		$("#btnAlta").button().click(function() {
 			generic.getForm('pelicula');
 		});
+		
 		$("#btnEditar").button().click(function() {
 			generic.getForm('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
 		});
 		$("#btnEditar").button("disable");
+		
 		$("#btnVerFicha").button().click(function() {
 			generic.getDetail('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
 		});
@@ -117,12 +118,7 @@ var pelicula = {
 			generic.get('pelicula/busqueda',data,generic.showInformation);
 		});
 	},
-
 	'formatForm' : function() {
-		$(window).bind('resize', function() {
-			$('#lista').setGridWidth($('.ui-jqgrid').parent().innerWidth() - 30);
-		}).trigger('resize');
-		
 		$("#btnCancel").button().click(function() {
 			generic.getList('pelicula');
 		});
@@ -173,6 +169,11 @@ var pelicula = {
 			$("#menuDesplegableFormatos li ul li").click(function(event){
 				  $("#formato").val(event.target.text);
 			});
+		});
+	},
+	'formatDetail' : function() {
+		$("#btnCancel").button().click(function() {
+			generic.getList('pelicula');
 		});
 	},
 	'getParams' : function() {

@@ -152,9 +152,16 @@ var generic = {
 				}
 			},
 			error : function(e) {
-				jAlert(
-						'Se ha producido un error al acceder a la p&aacute;gina',
-						'Error de acceso');
+				var message = 'Se ha producido un error al procesar la acci&oacute;n';
+				switch (e.status) {
+				case 404:
+					message = 'La p&aacute;gina a la que intenta acceder no existe';
+					break;
+				case 403:
+					message = 'No tiene permisos para acceder a esta funcionalidad';
+					break;
+				}
+				jAlert(message, 'Error');
 			},
 			complete : function() {
 				$("body").removeClass("loading");
