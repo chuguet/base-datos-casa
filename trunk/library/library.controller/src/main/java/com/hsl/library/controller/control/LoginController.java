@@ -25,7 +25,7 @@ import com.hsl.library.model.bean.Usuario;
 public class LoginController {
 
 	/** The Constant sdf. */
-	private static final SimpleDateFormat sdf = new SimpleDateFormat(
+	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(
 			"EEEE, d 'de' MMMM 'de' yyyy", new Locale("es", "ES"));
 
 	/**
@@ -112,7 +112,7 @@ public class LoginController {
 			model.addAttribute("nombre", usuario.getNombre());
 			model.addAttribute("apellidos", usuario.getApellidos());
 			model.addAttribute("fecha",
-					sdf.format(Calendar.getInstance().getTime()));
+					DATE_FORMATTER.format(Calendar.getInstance().getTime()));
 			return "home";
 		} else {
 			model.addAttribute("noAccess", true);
