@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<script type="text/javascript">
+	usuario.formatList();
+	function showInformationIntoView(information){
+		$("#lista").setGridParam({
+			data : information
+		}).trigger("reloadGrid");
+		$(window).bind('resize', function() {
+			$('#lista').setGridWidth($('.ui-jqgrid').parent().innerWidth() - 30);
+		}).trigger('resize');
+	};
+</script>
+
 <fieldset id="parent">
 	<legend>Listado de Usuarios</legend>
 	<div class="botonera">
@@ -11,15 +23,3 @@
 	<table id="lista"></table>
 	<div id=paginadorLista></div>
 </fieldset>
-
-<script type="text/javascript">
-usuario.formatList();
-function showInformationIntoView(information){
-	$("#lista").setGridParam({
-		data : information
-	}).trigger("reloadGrid");
-	$(window).bind('resize', function() {
-		$('#lista').setGridWidth($('.ui-jqgrid').parent().innerWidth() - 30);
-	}).trigger('resize');
-};
-</script>
