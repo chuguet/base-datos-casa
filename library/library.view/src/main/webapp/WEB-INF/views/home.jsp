@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>Biblioteca filmoteca casa</title>
+		<title>La Bibliofilmoteca</title>
 		
 		<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
@@ -24,17 +24,13 @@
 		
 		<script src="resources/js/views/usuario.js" type="text/javascript"></script>
 		<script src="resources/js/views/pelicula.js" type="text/javascript"></script>
-		
-		<script type="text/javascript">
-			generic.resizeEvent();
-		</script>
 	</head>
 	
 	<body class="web" >
 		
 		<div id="header">
 			<div id="titulo">
-				<h1>Biblioteca filmoteca casa</h1>
+				<h1>La Bibliofilmoteca</h1>
 			</div>
 			<div id="fecha">
 				<h3>Hoy es ${fecha}</h3>
@@ -46,6 +42,7 @@
 				<a href="javascript:void" onclick="javascript:generic.getList('usuario');" title="Ver usuarios" class="itemMenu">Usuarios</a>
 			</sec:authorize>
 			<a href="javascript:void" onclick="javascript:generic.getList('pelicula');" title="Ver peliculas" class="itemMenu">Pel&iacute;culas</a>
+			<a href="javascript:void" onclick="javascript:generic.getList('libro');" title="Ver libros" class="itemMenu">Libros</a>
 			<div id="usuario">
 				<span id="nombreUsuario"><b>Usuario :</b> ${nombre} ${apellidos}</span> 
 				<a href="<c:url value="/home" />" id="btnHome" title="Home"></a>
@@ -55,11 +52,13 @@
 		
 		
 		<div id="content">
-<!-- 			<img src="resources/imgs/copa.png" alt="imagenes" class="imgCopa"/> -->
+			<img src="resources/imgs/content.jpg"/>
 		</div>
 		
 		<div id="footer">
-			&#169; Huguet S.L. &#174;
+			<span>
+				&#169; Huguet S.L. &#174;
+			</span>
 		</div>
 		
 		<div class="modal"></div>
