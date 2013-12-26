@@ -65,6 +65,9 @@ var pelicula = {
 				$("#btnEditar").button("enable");
 				$("#btnEliminar").button("enable");
 				pelicula.rowID = rowid;
+			},
+			ondblClickRow : function(rowid){
+				generic.getDetail('pelicula', rowid);
 			}
 		});
 		$(window).bind('resize', function() {

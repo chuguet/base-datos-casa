@@ -64,6 +64,9 @@ var usuario = {
 				$("#btnEditar").button("enable");
 				$("#btnEliminar").button("enable");
 				usuario.rowID = rowid;
+			},
+			ondblClickRow : function(rowid){
+				generic.getForm('usuario', rowid);
 			}
 		});
 		$(window).bind('resize', function() {
