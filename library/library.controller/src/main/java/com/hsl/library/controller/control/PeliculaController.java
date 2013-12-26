@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hsl.library.controller.dto.BusquedaDTO;
+import com.hsl.library.controller.dto.BusquedaPeliculaDTO;
 import com.hsl.library.controller.dto.MensajeDTO;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
@@ -78,7 +78,7 @@ public class PeliculaController {
 	 * @return the list
 	 */
 	private List<Pelicula> filtrarPeliculas(List<Pelicula> peliculas,
-			BusquedaDTO busqueda) {
+			BusquedaPeliculaDTO busqueda) {
 		List<Pelicula> result = new ArrayList<Pelicula>();
 		for (Pelicula pelicula : peliculas) {
 			if (peliculasSimilares(pelicula, busqueda)
@@ -145,7 +145,7 @@ public class PeliculaController {
 	public @ResponseBody
 	MensajeDTO insert(@RequestBody PeliculaDTO peliculaDTO) {
 		if (peliculaDTO == null) {
-			return new MensajeDTO("Un Pelicula es requerido", false);
+			return new MensajeDTO("Un pelicula es requerida", false);
 		}
 		try {
 			Pelicula pelicula = peliculaUtilDTO.toBusiness(peliculaDTO);
@@ -153,7 +153,7 @@ public class PeliculaController {
 			return new MensajeDTO("Pelicula creada correctamente", true);
 		} catch (DatabaseInsertException e) {
 			LOG.error(e.getMessage());
-			return new MensajeDTO(new StringBuffer("Ya existe la pelicula ")
+			return new MensajeDTO(new StringBuffer("Ya existe el libro ")
 					.append(peliculaDTO.getTitulo())
 					.append(" en base de datos.").toString(), false);
 		} catch (ParseException e) {
@@ -173,11 +173,11 @@ public class PeliculaController {
 		List<PeliculaDTO> peliculasDTO = new ArrayList<PeliculaDTO>();
 
 		try {
-			List<Pelicula> Peliculas = this.peliculaService.findAll();
+			List<Pelicula> peliculas = this.peliculaService.findAll();
 
-			for (Pelicula Pelicula : Peliculas) {
-				PeliculaDTO PeliculaDTO = peliculaUtilDTO.toRest(Pelicula);
-				peliculasDTO.add(PeliculaDTO);
+			for (Pelicula pelicula : peliculas) {
+				PeliculaDTO peliculaDTO = peliculaUtilDTO.toRest(pelicula);
+				peliculasDTO.add(peliculaDTO);
 			}
 		} catch (DatabaseRetrieveException e) {
 			LOG.error(e.getMessage());
@@ -210,10 +210,9 @@ public class PeliculaController {
 			@RequestParam(value = "genero") String genero) {
 		List<PeliculaDTO> result = new ArrayList<PeliculaDTO>();
 		try {
-			BusquedaDTO busquedaDTO = new BusquedaDTO(titulo, director,
+			BusquedaPeliculaDTO busquedaDTO = new BusquedaPeliculaDTO(titulo, director,
 					interpretes, distribuidora, genero);
-			List<Pelicula> peliculas;
-			peliculas = this.peliculaService.findAll();
+			List<Pelicula> peliculas = this.peliculaService.findAll();
 			if (busquedaDTO.isEmpty()) {
 				for (Pelicula pelicula : peliculas) {
 					PeliculaDTO peliculaDTO = new PeliculaDTO();
@@ -244,7 +243,7 @@ public class PeliculaController {
 	 *            the busqueda
 	 * @return the boolean
 	 */
-	private Boolean peliculasSimilares(Pelicula pelicula, BusquedaDTO busqueda) {
+	private Boolean peliculasSimilares(Pelicula pelicula, BusquedaPeliculaDTO busqueda) {
 		return pelicula.getDirector().toUpperCase()
 				.contains(busqueda.getDirector().toUpperCase())
 				&& pelicula.getDistribuidora().toUpperCase()
@@ -270,7 +269,7 @@ public class PeliculaController {
 	public @ResponseBody
 	MensajeDTO remove(@PathVariable Integer id, Model uiModel) {
 		if (id == null) {
-			return new MensajeDTO("Un Pelicula es requerido", false);
+			return new MensajeDTO("Una pelicula es requerida", false);
 		}
 		try {
 			Pelicula pelicula = new Pelicula();
@@ -299,6 +298,9 @@ public class PeliculaController {
 			peliculaDTO = peliculaUtilDTO.toRest(pelicula);
 		} catch (DatabaseRetrieveException e) {
 			LOG.error(e.getMessage());
+			LOG.error(new StringBuffer(
+					"No ha podido recuperarse la pelicula con id ").append(id)
+					.toString());
 		}
 		return peliculaDTO;
 	}
