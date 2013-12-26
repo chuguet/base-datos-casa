@@ -49,7 +49,7 @@
 			</p>
 			<p>
 				<label for="fechaEstreno">Fecha estreno</label>
-				<input id="fechaEstreno" readonly=true type="textbox" maxlength="3" class="text ui-widget-content ui-corner-all" />
+				<input id="fechaEstreno" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" readonly=true />
 			</p>
 			<p>
 				<label for="distribuidora">Distribuidora</label>
@@ -67,15 +67,15 @@
 		<div class="table">
 			<p id="bloqueCalificacion">
 				<label for="calificacion">Calificaci&oacute;n</label>
-				<input id="calificacion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="calificacion" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" readonly=true />
 			</p>
 			<p id="bloqueGenero">
 				<label for="genero">G&eacute;nero</label>
-				<input id="genero" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="genero" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" readonly=true />
 			</p>
 			<p id="bloqueFormato">
 				<label for="formato">Formato</label>
-				<input id="formato" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="formato" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" readonly=true />
 			</p>
 		</div>
 		<div class="table">
