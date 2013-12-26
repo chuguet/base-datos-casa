@@ -99,6 +99,18 @@ var pelicula = {
 			});
 		});
 		$("#btnEliminar").button("disable");
+		
+		generic.get('pelicula/generos', null, function(){
+			$("#genero").autocomplete({
+				source:arguments[0],
+				select:function(event, ui){
+					pelicula.busqueda(ui.item.value);
+				}
+			});
+		});
+		$(".text").keyup(function(){
+			pelicula.busqueda(null);
+		});
 	},
 	'formatForm' : function() {
 		$("#btnCancel").button().click(function() {
