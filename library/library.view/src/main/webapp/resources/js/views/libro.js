@@ -110,15 +110,15 @@ var libro = {
 	},
 	'formatForm' : function() {
 		$("#btnCancel").button().click(function() {
-			generic.getList('pelicula');
+			generic.getList('libro');
 		});
 
-		$("#btnSavePelicula").button().click(function() {
-			pelicula.getParams();
+		$("#btnSaveLibro").button().click(function() {
+			libro.getParams();
 		});
 		
 		var datePickerParams = {
-                "dateFormat" : 'dd/mm/yy',
+                "dateFormat" : 'mm/yy',
                 "yearRange":"-90:+0",
                 "dayNamesMin" : [
                                 "D", "L", "M", "X", "J", "V", "S"
@@ -130,88 +130,48 @@ var libro = {
                 monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
                                   'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
         		changeMonth: true,
-        		changeYear: true,
+        		changeYear: true
         };
-		$("#fechaEstreno").datepicker(datePickerParams);
-		
-		generic.get('pelicula/calificaciones',null,function(){
-			var menu = createMenu("menuDesplegableCalificaciones", "Seleccionar calificaci&oacute;n", arguments[0]);
-			$("#bloqueCalificacion").append(menu);
-			$("#menuDesplegableCalificaciones").menu();
-			$("#menuDesplegableCalificaciones li ul li").click(function(event){
-					  $("#calificacion").val(event.target.text);
-			});
-		});
-		
-		generic.get('pelicula/generos',null,function(){
-			var menu = createMenu("menuDesplegableGeneros", "Seleccionar g&eacute;nero", arguments[0]);
-			$("#bloqueGenero").append(menu);
-			$("#menuDesplegableGeneros").menu();
-			$("#menuDesplegableGeneros li ul li").click(function(event){
-				  $("#genero").val(event.target.text);
-			});
-		});
-		
-		generic.get('pelicula/formatos',null,function(){
-			var menu = createMenu("menuDesplegableFormatos", "Seleccionar formato", arguments[0]);
-			$("#bloqueFormato").append(menu);
-			$("#menuDesplegableFormatos").menu();
-			$("#menuDesplegableFormatos li ul li").click(function(event){
-				  $("#formato").val(event.target.text);
-			});
-		});
+		$("#fechaEdicion").datepicker(datePickerParams);
+		$("#fechaImpresion").datepicker(datePickerParams);
 	},
 	'formatDetail' : function() {
 		$("#btnCancel").button().click(function() {
-			generic.getList('pelicula');
+			generic.getList('libro');
 		});
 	},
 	'getParams' : function() {
 		var id = ($("#id").val()) ? $("#id").val() : null;
 		var titulo = $("input[id=titulo]").val();
-		var director = $("input[id=director]").val();
-		var fechaEstreno = $("input[id=fechaEstreno]").val();
-		var distribuidora = $("input[id=distribuidora]").val();
-		var duracion = $("input[id=duracion]").val();
-		var nacionalidad = $("input[id=nacionalidad]").val();
-		var calificacion = $("input[id=calificacion]").val();
-		var genero = $("input[id=genero]").val();
-		var formato = $("input[id=formato]").val();
-		var interpretes = $("#interpretes").val();
-		var sinopsis = $("#sinopsis").val();
+		var autores = $("input[id=autores]").val();
+		var coleccion = $("input[id=coleccion]").val();
+		var descripcion = $("input[id=descripcion]").val();
+		var edicion = $("input[id=edicion]").val();
+		var encuadernacion = $("input[id=encuadernacion]").val();
+		var fechaEdicion = $("input[id=fechaEdicion]").val();
+		var fechaImpresion = $("input[id=fechaImpresion]").val();
+		var isbn10 = $("input[id=isbn10]").val();
+		var isbn13 = $("input[id=isbn13]").val();
+		var lenguaPublicacion = $("input[id=lenguaPublicacion]").val();
+		var lenguaTraduccion = $("input[id=lenguaTraduccion]").val();
+		var materias = $("input[id=materias]").val();
+		var publicacion = $("input[id=publicacion]").val();
+		var precio = $("input[id=precio]").val();
 		var errores = '';
 		if (titulo == '') {
 			errores += '- Debe introducir el t&iacute;tulo<br/>';
 		}
-		if (director == '') {
-			errores += '- Debe introducir el nombre del director<br/>';
+		if (autores == '') {
+			errores += '- Debe introducir el nombre de el/los autor/es<br/>';
 		}
-		if (fechaEstreno == ''){
-			errores += '- Debe introducir la fecha de estreno<br/>';
+		if (precio != '' && !isNumber(precio)) {
+			errores += '- Debe introducir un precio correcto<br/>';
 		}
-		if (distribuidora == '') {
-			errores += '- Debe introducir la distribuidora de la pel&iacute;cula<br/>';
+		if (isbn10 != '' && (!isNumber(isbn10) || isbn10.length != 10)) {
+			errores += '- Debe introducir un ISBN de longitud 10 y formato num&eacute;rico<br/>';
 		}
-		if (duracion == '' || !isNumber(duracion)) {
-			errores += '- Debe introducir una duraci&oacute;n correcta<br/>';
-		}
-		if (nacionalidad == '') {
-			errores += '- Debe introducir la nacionalidad de la pel&iacute;cula<br/>';
-		}
-		if (calificacion == '') {
-			errores += '- Debe introducir la calificaci&oacute;n de la pel&iacute;cula<br/>';
-		}
-		if (genero == '') {
-			errores += '- Debe introducir el g&eacute;nero de la pel&iacute;cula<br/>';
-		}
-		if (formato == '') {
-			errores += '- Debe introducir un formato de pel&iacute;cula<br/>';
-		}
-		if (interpretes == '') {
-			errores += '- Debe introducir los int&eacute;rpretes de la pel&iacute;cula<br/>';
-		}
-		if (sinopsis == '') {
-			errores += '- Debe introducir la sinopsis de la pel&iacute;cula';
+		if (isbn13 != '' && (!isNumber(isbn13) || isbn13.length != 13)) {
+			errores += '- Debe introducir un ISBN de longitud 13 y formato num&eacute;rico<br/>';
 		}
 		if (errores != '') {
 			jAlert(errores, "Validaci&oacute;n");
@@ -220,20 +180,24 @@ var libro = {
 			var data = {
 				id : id,
 				titulo : titulo,
-				director : director,
-				fechaEstreno : fechaEstreno,
-				distribuidora : distribuidora,
-				duracion : duracion,
-				nacionalidad : nacionalidad,
-				calificacion : calificacion,
-				genero : genero,
-				formato : formato,
-				interpretes : interpretes,
-				sinopsis : sinopsis
+				autores : autores,
+				coleccion : coleccion,
+				descripcion : descripcion,
+				edicion : edicion,
+				encuadernacion : encuadernacion,
+				fechaEdicion : fechaEdicion,
+				fechaImpresion : fechaImpresion,
+				isbn10 : isbn10,
+				isbn13 : isbn13,
+				lenguaPublicacion : lenguaPublicacion,
+				lenguaTraduccion : lenguaTraduccion,
+				materias : materias,
+				publicacion : publicacion,
+				precio : precio
 			};
-			var entity = (id != null) ? 'pelicula/' + id : 'pelicula';
+			var entity = (id != null) ? 'libro/' + id : 'libro';
 			generic.post(entity, data, function() {
-				generic.getList('pelicula');
+				generic.getList('libro');
 			});
 		};
 	}
