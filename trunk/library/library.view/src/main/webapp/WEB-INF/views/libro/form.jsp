@@ -4,7 +4,7 @@
 
 <style>
 	.table{display:inline-block; padding-left:35px; padding-right:35px;}
-	input.text{vertical-align: top; display:block; width:100%;}
+	input.text{vertical-align: top; display:block; width:350px !important;}
 </style>
 
 <script type="text/javascript">
