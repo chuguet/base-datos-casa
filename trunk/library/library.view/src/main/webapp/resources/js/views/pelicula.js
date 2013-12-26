@@ -50,10 +50,11 @@ var pelicula = {
 						align : 'right'
 					}
 			],
-			rowNum : 6,
+			rowNum : 9,
 			rowList : [
-					3,6
+					3,6,9
 			],
+			height: "100%",
 			pager : '#paginadorLista',
 			sortname : 'titulo',
 			sortorder : 'asc',

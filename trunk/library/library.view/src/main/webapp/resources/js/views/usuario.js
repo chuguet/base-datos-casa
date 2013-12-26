@@ -50,10 +50,11 @@ var usuario = {
 						align : 'center'
 					}
 			],
-			rowNum : 6,
+			rowNum : 9,
 			rowList : [
-					3,6
+					3,6,9
 			],
+			height: "100%",
 			pager : '#paginadorLista',
 			sortname : 'nombre',
 			sortorder : 'asc',
