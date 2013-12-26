@@ -4,6 +4,14 @@ body div.ui-datepicker {font-size: 0.7em;}
 
 body.web {overflow:hidden; background: rgb(105, 105, 105); background: -moz-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -webkit-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -o-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: -ms-linear-gradient(30deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%); background: linear-gradient(120deg, rgb(105, 105, 105) 30%, rgb(166, 166, 166) 70%);}
 
+body.web form.login {width:320px; height:250px; position:absolute; left:50%; top:50%; margin-top:-125px; margin-left:-160px;}
+body.web form.login div {padding: 20px 20px 30px 20px; -webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px; -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75); -moz-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75); box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75); background: rgb(96, 96, 101); background: -moz-linear-gradient(30deg, rgb(96, 96, 101) 30%, rgb(133, 140, 145) 70%); background: -webkit-linear-gradient(30deg, rgb(96, 96, 101) 30%, rgb(133, 140, 145) 70%); background: -o-linear-gradient(30deg, rgb(96, 96, 101) 30%, rgb(133, 140, 145) 70%); background: -ms-linear-gradient(30deg, rgb(96, 96, 101) 30%, rgb(133, 140, 145) 70%); background: linear-gradient(120deg, rgb(96, 96, 101) 30%, rgb(133, 140, 145) 70%);}
+body.web form.login img{width:150px; height:150px; position:absolute; left:50%; top:-20%}
+body.web form.login h2{text-shadow: 3px 3px 2px rgba(150, 150, 150, 1);}
+body.web form.login span {font-size:16px; width:100%;}
+body.web form.login input {width:100%;}
+body.web form.login input.btn {width:100px; margin: 9px 10px 0px 27px;}
+
 body.web div#header {overflow:hidden; color:#CCCCCC; height: 59px; position:absolute; top:0px; width:100%; background: rgb(0, 0, 0); background: -moz-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -webkit-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -o-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: -ms-linear-gradient(270deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%); background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(66, 68, 71) 100%);}
 body.web div#header #titulo{display: inline-block; float:left; padding-left:20px;}
 body.web div#header #fecha{display:inline-block; float: right; padding-right:20px; margin-top:10px;}
