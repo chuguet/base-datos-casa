@@ -98,24 +98,15 @@ var pelicula = {
 		
 		//Se añade evento para la busqueda
 		generic.get('pelicula/generos',null,function(){
-			$( "#genero" ).autocomplete({
-			      source: arguments[0]
+			$("#genero").autocomplete({
+			      source: arguments[0],
+			      select:function(event, ui){
+			          pelicula.busqueda(ui.item.value);
+			      }
 			});
 		});
 		$(".text").keyup(function(){
-			var titulo = $("input[id=titulo]").val();
-			var director = $("input[id=director]").val();
-			var interpretes = $("input[id=interpretes]").val();
-			var distribuidora = $("input[id=distribuidora]").val();
-			var genero = $("input[id=genero]").val();
-			var data = {
-					titulo : titulo,
-					director : director,
-					interpretes : interpretes,
-					distribuidora : distribuidora,
-					genero : genero,
-			};
-			generic.get('pelicula/busqueda',data,generic.showInformation);
+			pelicula.busqueda(null);
 		});
 	},
 	'formatForm' : function() {
@@ -246,6 +237,26 @@ var pelicula = {
 				generic.getList('pelicula');
 			});
 		};
+	},
+	'busqueda': function (value){
+		var titulo = $("input[id=titulo]").val();
+		var director = $("input[id=director]").val();
+		var interpretes = $("input[id=interpretes]").val();
+		var distribuidora = $("input[id=distribuidora]").val();
+		var genero;
+		if(value == null){
+			genero = $("input[id=genero]").val();
+		} else{
+			genero = value;
+		}
+		var data = {
+				titulo : titulo,
+				director : director,
+				interpretes : interpretes,
+				distribuidora : distribuidora,
+				genero : genero,
+		};
+		generic.get('pelicula/busqueda',data,generic.showInformation);
 	}
 };
 
