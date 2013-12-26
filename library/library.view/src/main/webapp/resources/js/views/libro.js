@@ -1,11 +1,11 @@
-var pelicula = {
+var libro = {
 	'rowID' : null,
 	'formatList' : function() {
 		$("#lista").jqGrid({
 			datatype : 'local',
 			data : [],
 			colNames : [
-					"Id", "T&iacute;tulo", "Director", "Distribuidora", "G&eacute;nero", "Calificaci&oacute;n"
+					"Id", "T&iacute;tulo", "Autore/s", "Materia/s", "Edici&oacute;n", "Precio"
 			],
 			colModel : [
 					{
@@ -21,30 +21,30 @@ var pelicula = {
 						sortable : true,
 						align : 'left'
 					}, {
-						name : 'director',
-						index : 'director',
-						width : 30,
+						name : 'autores',
+						index : 'autores',
+						width : 40,
 						sorttype : 'string',
 						sortable : true,
 						align : 'left'
 					},  {
-						name : 'distribuidora',
-						index : 'distribuidora',
+						name : 'materias',
+						index : 'materias',
 						width : 40,
 						sorttype : 'string',
 						sortable : true,
 						align : 'left'
 					},{
-						name : 'genero',
-						index : 'genero',
+						name : 'edicion',
+						index : 'edicion',
 						width : 20,
 						sorttype : 'string',
 						sortable : true,
 						align : 'right'
 					},{
-						name : 'calificacion',
-						index : 'calificacion',
-						width : 20,
+						name : 'precio',
+						index : 'precio',
+						width : 10,
 						sorttype : 'string',
 						sortable : true,
 						align : 'right'
@@ -64,10 +64,10 @@ var pelicula = {
 				$("#btnVerFicha").button("enable");
 				$("#btnEditar").button("enable");
 				$("#btnEliminar").button("enable");
-				pelicula.rowID = rowid;
+				libro.rowID = rowid;
 			},
 			ondblClickRow : function(rowid){
-				generic.getDetail('pelicula', rowid);
+				generic.getDetail('libro', rowid);
 			}
 		});
 		$(window).bind('resize', function() {
@@ -75,29 +75,38 @@ var pelicula = {
 		}).trigger('resize');
 		
 		/**
-		 * *****Configuración de los botones del formulario de
-		 * peliculas**********
+		 * *****Configuración de los botones del formulario de libros **********
 		 */
 		$("#btnAlta").button().click(function() {
-			generic.getForm('pelicula');
+			generic.getForm('libro');
 		});
 		
 		$("#btnEditar").button().click(function() {
-			generic.getForm('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
+			generic.getForm('libro', $('#lista').jqGrid('getRowData', libro.rowID).id);
 		});
 		$("#btnEditar").button("disable");
 		
 		$("#btnVerFicha").button().click(function() {
-			generic.getDetail('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id);
+			generic.getDetail('libro', $('#lista').jqGrid('getRowData', libro.rowID).id);
 		});
 		$("#btnVerFicha").button("disable");
 
 		$("#btnEliminar").button().click(function() {
-			generic.delete('pelicula', $('#lista').jqGrid('getRowData', pelicula.rowID).id, function() {
-				generic.getList('pelicula');
+			generic.delete('libro', $('#lista').jqGrid('getRowData', libro.rowID).id, function() {
+				generic.getList('libro');
 			});
 		});
 		$("#btnEliminar").button("disable");
+	
+		$(".text").keyup(function(){
+			var titulo = $("input[id=titulo]").val();
+			var autores = $("input[id=autores]").val();
+			var data = {
+					titulo : titulo,
+					autores : autores
+			};
+			generic.get('libro/busqueda',data,generic.showInformation);
+		});
 	},
 	'formatForm' : function() {
 		$("#btnCancel").button().click(function() {
@@ -227,41 +236,9 @@ var pelicula = {
 				generic.getList('pelicula');
 			});
 		};
-	},
-	'busqueda': function (value){
-		var titulo = $("input[id=titulo]").val();
-		var director = $("input[id=director]").val();
-		var interpretes = $("input[id=interpretes]").val();
-		var distribuidora = $("input[id=distribuidora]").val();
-		var genero;
-		if(value == null){
-			genero = $("input[id=genero]").val();
-		} else{
-			genero = value;
-		}
-		var data = {
-				titulo : titulo,
-				director : director,
-				interpretes : interpretes,
-				distribuidora : distribuidora,
-				genero : genero,
-		};
-		generic.get('pelicula/busqueda',data,generic.showInformation);
 	}
 };
 
 function isNumber(n) {
 	  return !isNaN(parseFloat(n)) && isFinite(n);
 }
-
-function createMenu(id, nombre, elementos){
-	var submenu;
-	var menu;
-	menu = "<ul style='width:220px;' id='"+id+"'><li><a href='#'>"+nombre+"</a><ul>";
-	elementos.forEach(function(elemento) {
-		submenu = "<li><a href='#'>"+elemento+"</a></li>";
-		menu += submenu;
-	});
-	menu += "</ul></li></ul>";
-	return menu;
-};

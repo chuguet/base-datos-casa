@@ -6,6 +6,9 @@ package com.hsl.library.controller.dto;
  */
 public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 
+	/** The autores. */
+	private String autores;
+
 	/** The titulo. */
 	private String titulo;
 
@@ -21,10 +24,22 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 * 
 	 * @param titulo
 	 *            the titulo
+	 * @param autores
+	 *            the autores
 	 */
-	public BusquedaLibroDTO(String titulo) {
+	public BusquedaLibroDTO(String titulo, String autores) {
 		super();
-		this.titulo = titulo;
+		this.titulo = encoding(titulo);
+		this.autores = encoding(autores);
+	}
+
+	/**
+	 * Gets the autores.
+	 * 
+	 * @return the autores
+	 */
+	public String getAutores() {
+		return autores;
 	}
 
 	/**
@@ -42,7 +57,17 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 * @return the boolean
 	 */
 	public Boolean isEmpty() {
-		return this.titulo.isEmpty();
+		return this.titulo.isEmpty() && this.autores.isEmpty();
+	}
+
+	/**
+	 * Sets the autores.
+	 * 
+	 * @param autores
+	 *            the new autores
+	 */
+	public void setAutores(String autores) {
+		this.autores = autores;
 	}
 
 	/**
@@ -52,7 +77,7 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 *            the new titulo
 	 */
 	public void setTitulo(String titulo) {
-		this.titulo = encoding(titulo);
+		this.titulo = titulo;
 	}
 
 }

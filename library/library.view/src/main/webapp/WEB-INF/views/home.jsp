@@ -24,6 +24,7 @@
 		
 		<script src="resources/js/views/usuario.js" type="text/javascript"></script>
 		<script src="resources/js/views/pelicula.js" type="text/javascript"></script>
+		<script src="resources/js/views/libro.js" type="text/javascript"></script>
 	</head>
 	
 	<body class="web" >
