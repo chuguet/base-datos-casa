@@ -24,8 +24,12 @@
 		
 		<script src="resources/js/views/usuario.js" type="text/javascript"></script>
 		<script src="resources/js/views/pelicula.js" type="text/javascript"></script>
-
+		
+		<script type="text/javascript">
+			generic.resizeEvent();
+		</script>
 	</head>
+	
 	<body class="web" >
 		
 		<div id="header">

@@ -171,5 +171,15 @@ var generic = {
 	'showInformation' : function() {
 		var information = arguments[0];
 		showInformationIntoView(information);
+	},
+	'resizeEvent' : function() {
+		$(window).resize(function() {
+			generic.resizeContent();
+		});
+		this.resizeContent();
+	},
+	'resizeContent' : function() {
+		var bodyHeight = $('body').height();
+		$('#content').height(bodyHeight - 103);
 	}
 };
