@@ -1,18 +1,10 @@
 package com.hsl.library.controller.dto;
 
-import java.nio.charset.Charset;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class BusquedaDTO.
  */
-public class BusquedaDTO {
-
-	/** The Constant ISO_8859_1. */
-	public static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
-
-	/** The Constant UTF_8. */
-	public static final Charset UTF_8 = Charset.forName("UTF-8");
+public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 
 	/** The director. */
 	private String director;
@@ -32,7 +24,7 @@ public class BusquedaDTO {
 	/**
 	 * Instantiates a new busqueda dto.
 	 */
-	public BusquedaDTO() {
+	public BusquedaPeliculaDTO() {
 
 	}
 
@@ -50,25 +42,14 @@ public class BusquedaDTO {
 	 * @param genero
 	 *            the genero
 	 */
-	public BusquedaDTO(String titulo, String director, String interpretes,
-			String distribuidora, String genero) {
+	public BusquedaPeliculaDTO(String titulo, String director,
+			String interpretes, String distribuidora, String genero) {
 		super();
-		this.genero = enconding(genero);
-		this.titulo = enconding(titulo);
-		this.director = enconding(director);
-		this.interpretes = enconding(interpretes);
-		this.distribuidora = enconding(distribuidora);
-	}
-
-	/**
-	 * Enconding.
-	 * 
-	 * @param value
-	 *            the value
-	 * @return the string
-	 */
-	private String enconding(String value) {
-		return new String(value.getBytes(ISO_8859_1), UTF_8);
+		this.genero = encoding(genero);
+		this.titulo = encoding(titulo);
+		this.director = encoding(director);
+		this.interpretes = encoding(interpretes);
+		this.distribuidora = encoding(distribuidora);
 	}
 
 	/**
