@@ -21,7 +21,7 @@
 		<intercept-url pattern="/pelicula/*/detail" access="ROLE_ADMIN, ROLE_USER" />
 		<intercept-url pattern="/pelicula/**" access="ROLE_ADMIN" />
 		
-		<intercept-url pattern="libro" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/libro" access="ROLE_ADMIN, ROLE_USER" />
 		<intercept-url pattern="/libro/*" access="ROLE_ADMIN, ROLE_USER" />
 		<intercept-url pattern="/libro/*/list" access="ROLE_ADMIN, ROLE_USER" />
 		<intercept-url pattern="/libro/*/detail" access="ROLE_ADMIN, ROLE_USER" />

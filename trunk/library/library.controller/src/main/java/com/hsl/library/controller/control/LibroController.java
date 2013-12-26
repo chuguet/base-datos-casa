@@ -96,7 +96,9 @@ public class LibroController {
 	 */
 	private Boolean librosSimilares(Libro libro, BusquedaLibroDTO busqueda) {
 		return libro.getTitulo().toUpperCase()
-				.contains(busqueda.getTitulo().toUpperCase());
+				.contains(busqueda.getTitulo().toUpperCase())
+				&& libro.getAutores().toUpperCase()
+						.contains(busqueda.getAutores().toUpperCase());
 	}
 
 	/**
@@ -159,10 +161,11 @@ public class LibroController {
 	 */
 	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)
 	public @ResponseBody
-	List<LibroDTO> listAllFilter(@RequestParam(value = "titulo") String titulo) {
+	List<LibroDTO> listAllFilter(@RequestParam(value = "titulo") String titulo,
+			@RequestParam(value = "autores") String autores) {
 		List<LibroDTO> result = new ArrayList<LibroDTO>();
 		try {
-			BusquedaLibroDTO busquedaDTO = new BusquedaLibroDTO(titulo);
+			BusquedaLibroDTO busquedaDTO = new BusquedaLibroDTO(titulo, autores);
 			List<Libro> libros = this.libroService.findAll();
 			if (busquedaDTO.isEmpty()) {
 				for (Libro libro : libros) {
