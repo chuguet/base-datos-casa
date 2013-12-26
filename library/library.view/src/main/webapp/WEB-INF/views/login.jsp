@@ -3,51 +3,52 @@
 <html>
 
 <head>
-<title>Nutricional Coach Tracing</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="description" content="Pantalla de acceso al sistema" />
-
-<link href="resources/css/login.css" rel="stylesheet" type="text/css" />
-<link href="resources/css/jquery.alerts.css" rel="stylesheet" type="text/css">
-
-<script src="resources/js/jquery.alerts.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	<c:if test="${not empty error}">;
-	jAlert('${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}', 'Error');
-	</c:if>;
-	<c:if test="${noAccess}">;
-	jAlert('No tiene acceso a la administraci&oacute;n del sistema',
-			'Acceso prohibido');
-	</c:if>;
-</script>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="description" content="Pantalla de acceso al sistema" />
+	<title>La Bibliofilmoteca</title>
+	
+	<link href="../resources/imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	
+	<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
+	<link href="resources/css/jquery.alerts.css" rel="stylesheet" type="text/css">
+	
+	<script src="resources/js/jquery.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.alerts.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		function load(){
+			<c:if test="${not empty error}">
+				jAlert('${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}', 'Error');
+			</c:if>
+			<c:if test="${noAccess}">
+				jAlert('No tiene acceso a la administraci&oacute;n del sistema', 'Acceso prohibido');
+			</c:if>
+			<c:if test="${errorLogin}">
+				jAlert('Usuario o contraseña incorrectos.', 'Error de login');
+			</c:if>
+			$("#submit").button();
+			$("#reset").button();
+			$("#user").focus();
+		}
+	</script>
 </head>
-<body onload='document.f.j_username.focus();'>
 
-	<form name='login' id='login' action="<c:url value='j_spring_security_check' />" method='POST'>
-	
-	    <h1 id="ff-proof" class="ribbon">Nutricional Coach &nbsp;&nbsp;</h1>
-	
-	    <fieldset id="inputs">
-	
-	        <input name='j_username' id="username" type="text" onblur="if(this.value==&#39;&#39;)this.value=&#39;Usuario&#39;;" onfocus="if(this.value==&#39;Usuario&#39;)this.value=&#39;&#39;;" value="Usuario">
-	
-	        <input name="j_password" id="password" type="text" onblur="if(this.value==&#39;&#39;)this.value=&#39;Contraseña&#39;;" onfocus="if(this.value==&#39;Contraseña&#39;)this.value=&#39;&#39;;" value="Contraseña">
-	
-	    </fieldset>
-	
-	    <fieldset id="actions">
-	
-	        <input type="submit" id="submit" value="Entrar">
-	
-	       <p class="option"><a href="http://www.freshdesignweb.com/wp-content/uploads/downloads/2012/12/apple-dev-login.html#">Recuperar Contraseña</a>&nbsp;&nbsp;|<a href="http://www.freshdesignweb.com/wp-content/uploads/downloads/2012/12/apple-dev-login.html#">Registrarse</a></p>
-	
-	    </fieldset>
-	
+<body onload="load()" class="web">
+	<form name="f" id="f" action="<c:url value='j_spring_security_check' />" method="POST" class="login">
+		<div >
+			<img src="resources/imgs/login.png">
+			<h2>Acceso</h2>
+			<span>Usuario:</span>
+			<input id="user" type="text" name="j_username" class="text ui-widget-content ui-corner-all" />
+			<span>Contrase&ntilde;a:</span>
+			<input id="pass" type="password" name="j_password" class="text ui-widget-content ui-corner-all" />
+			<input id="submit" type="submit" value="Aceptar" class="btn" />
+			<input id="reset" type="reset" value="Cancelar" class="btn" />
+		</div>
 	</form>
-
 </body>
 
 </html>
