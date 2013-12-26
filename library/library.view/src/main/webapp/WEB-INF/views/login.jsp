@@ -27,7 +27,7 @@
 				jAlert('No tiene acceso a la administraci&oacute;n del sistema', 'Acceso prohibido');
 			</c:if>
 			<c:if test="${errorLogin}">
-				jAlert('Usuario o contraseña incorrectos.', 'Error de login');
+				jAlert('Usuario o contraseña incorrectos.', 'Error de acceso');
 			</c:if>
 			$("#submit").button();
 			$("#reset").button();
