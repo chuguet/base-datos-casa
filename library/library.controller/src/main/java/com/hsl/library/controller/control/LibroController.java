@@ -2,7 +2,9 @@ package com.hsl.library.controller.control;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -86,19 +88,24 @@ public class LibroController {
 	}
 
 	/**
-	 * Libros similares.
+	 * Gets the lenguajes.
 	 * 
-	 * @param libro
-	 *            the libro
-	 * @param busqueda
-	 *            the busqueda
-	 * @return the boolean
+	 * @return the lenguajes
 	 */
-	private Boolean librosSimilares(Libro libro, BusquedaLibroDTO busqueda) {
-		return libro.getTitulo().toUpperCase()
-				.contains(busqueda.getTitulo().toUpperCase())
-				&& libro.getAutores().toUpperCase()
-						.contains(busqueda.getAutores().toUpperCase());
+	@RequestMapping(value = "/lenguajes", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getLenguajes() {
+		List<String> result = new ArrayList<String>();
+		String[] languages = Locale.getISOLanguages();
+
+		for (String language : languages) {
+			Locale locale = new Locale(language);
+			result.add(new StringBuffer(locale.getDisplayLanguage()
+					.substring(0, 1).toUpperCase()).append(
+					locale.getDisplayLanguage().substring(1)).toString());
+		}
+		Collections.sort(result);
+		return result;
 	}
 
 	/**
@@ -130,6 +137,22 @@ public class LibroController {
 	}
 
 	/**
+	 * Libros similares.
+	 * 
+	 * @param libro
+	 *            the libro
+	 * @param busqueda
+	 *            the busqueda
+	 * @return the boolean
+	 */
+	private Boolean librosSimilares(Libro libro, BusquedaLibroDTO busqueda) {
+		return libro.getTitulo().toUpperCase()
+				.contains(busqueda.getTitulo().toUpperCase())
+				&& libro.getAutores().toUpperCase()
+						.contains(busqueda.getAutores().toUpperCase());
+	}
+
+	/**
 	 * List all.
 	 * 
 	 * @return the list
@@ -157,6 +180,8 @@ public class LibroController {
 	 * 
 	 * @param titulo
 	 *            the titulo
+	 * @param autores
+	 *            the autores
 	 * @return the list
 	 */
 	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)

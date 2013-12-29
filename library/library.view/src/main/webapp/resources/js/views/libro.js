@@ -135,6 +135,15 @@ var libro = {
         };
 		$("#fechaEdicion").datepicker(datePickerParams);
 		$("#fechaImpresion").datepicker(datePickerParams);
+		
+		generic.get('libro/lenguajes', null, function(){
+			$("#lenguaTraduccion").autocomplete({
+				source:arguments[0]
+			});
+			$("#lenguaPublicacion").autocomplete({
+				source:arguments[0]
+			});
+		});
 	},
 	'formatDetail' : function() {
 		$("#btnCancel").button().click(function() {

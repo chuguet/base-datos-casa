@@ -164,6 +164,12 @@ var pelicula = {
 				  $("#formato").val(event.target.text);
 			});
 		});
+		
+		generic.get('pelicula/paises', null, function(){
+			$("#nacionalidad").autocomplete({
+				source:arguments[0]
+			});
+		});
 	},
 	'formatDetail' : function() {
 		$("#btnCancel").button().click(function() {
