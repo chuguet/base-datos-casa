@@ -5,7 +5,7 @@ var pelicula = {
 			datatype : 'local',
 			data : [],
 			colNames : [
-					"Id", "T&iacute;tulo", "Director", "Distribuidora", "G&eacute;nero", "Calificaci&oacute;n"
+					"Id", "T&iacute;tulo", "Director", "Distribuidora", "Fecha Estreno", "G&eacute;nero", "Calificaci&oacute;n"
 			],
 			colModel : [
 					{
@@ -30,10 +30,17 @@ var pelicula = {
 					},  {
 						name : 'distribuidora',
 						index : 'distribuidora',
-						width : 40,
+						width : 30,
 						sorttype : 'string',
 						sortable : true,
 						align : 'left'
+					},{
+						name : 'fechaEstreno',
+						index : 'fechaEstreno',
+						width : 10,
+						sorttype : 'string',
+						sortable : true,
+						align : 'right'
 					},{
 						name : 'genero',
 						index : 'genero',
@@ -100,16 +107,39 @@ var pelicula = {
 		});
 		$("#btnEliminar").button("disable");
 		
+		$("#btnReset").button().click(function(){
+			$("input[id=titulo]").val("");
+			$("input[id=director]").val("");
+			$("input[id=interpretes]").val("");
+			$("input[id=genero]").val("");
+			$("input[id=decada]").val("");
+			pelicula.busqueda(null, null);
+		});
+		
 		generic.get('pelicula/generos', null, function(){
 			$("#genero").autocomplete({
 				source:arguments[0],
+				minLength: 0,
 				select:function(event, ui){
-					pelicula.busqueda(ui.item.value);
+					pelicula.busqueda(ui.item.value, null);
 				}
+			}).click(function(){
+				 $(this).autocomplete('search', $(this).val());
+			});
+		});
+		generic.get('pelicula/decadas', null, function(){
+			$("#decada").autocomplete({
+				source:arguments[0],
+				minLength: 0,
+				select:function(event, ui){
+					pelicula.busqueda(null, ui.item.value);
+				}
+			}).click(function(){
+				 $(this).autocomplete('search', "");
 			});
 		});
 		$(".text").keyup(function(){
-			pelicula.busqueda(null);
+			pelicula.busqueda(null, null);
 		});
 	},
 	'formatForm' : function() {
@@ -247,22 +277,27 @@ var pelicula = {
 			});
 		};
 	},
-	'busqueda': function (value){
+	'busqueda': function (pGenero, pDecada){
+		var genero;
+		var decada;
 		var titulo = $("input[id=titulo]").val();
 		var director = $("input[id=director]").val();
 		var interpretes = $("input[id=interpretes]").val();
-		var distribuidora = $("input[id=distribuidora]").val();
-		var genero;
-		if(value == null){
+		if(pDecada == null){
+			decada = $("input[id=decada]").val();
+		} else{
+			decada = pDecada;
+		}
+		if(pGenero == null){
 			genero = $("input[id=genero]").val();
 		} else{
-			genero = value;
+			genero = pGenero;
 		}
 		var data = {
 				titulo : titulo,
 				director : director,
 				interpretes : interpretes,
-				distribuidora : distribuidora,
+				decada : decada,
 				genero : genero,
 		};
 		generic.get('pelicula/busqueda',data,generic.showInformation);

@@ -35,7 +35,7 @@ import com.hsl.library.model.service.ILibroService;
  */
 @Controller
 @RequestMapping("/libro")
-public class LibroController {
+public class LibroController extends AbstractUtilController {
 
 	/** The Constant LOG. */
 	private final static Log LOG = LogFactory.getLog(LibroController.class);
@@ -65,6 +65,12 @@ public class LibroController {
 			operacion = "form";
 		}
 		return new StringBuffer("libro/").append(operacion).toString();
+	}
+
+	@RequestMapping(value = "/decadas", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getDecadas() {
+		return super.getDecadas();
 	}
 
 	/**
@@ -149,7 +155,8 @@ public class LibroController {
 		return libro.getTitulo().toUpperCase()
 				.contains(busqueda.getTitulo().toUpperCase())
 				&& libro.getAutores().toUpperCase()
-						.contains(busqueda.getAutores().toUpperCase());
+						.contains(busqueda.getAutores().toUpperCase())
+				&& estaEnDecada(libro.getFechaEdicion(), busqueda.getDecada());
 	}
 
 	/**
@@ -187,10 +194,12 @@ public class LibroController {
 	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)
 	public @ResponseBody
 	List<LibroDTO> listAllFilter(@RequestParam(value = "titulo") String titulo,
-			@RequestParam(value = "autores") String autores) {
+			@RequestParam(value = "autores") String autores,
+			@RequestParam(value = "decada") String decada) {
 		List<LibroDTO> result = new ArrayList<LibroDTO>();
 		try {
-			BusquedaLibroDTO busquedaDTO = new BusquedaLibroDTO(titulo, autores);
+			BusquedaLibroDTO busquedaDTO = new BusquedaLibroDTO(titulo,
+					autores, decada);
 			List<Libro> libros = this.libroService.findAll();
 			if (busquedaDTO.isEmpty()) {
 				for (Libro libro : libros) {
@@ -289,4 +298,5 @@ public class LibroController {
 			return new MensajeDTO("Error de conversión de la fecha.", false);
 		}
 	}
+
 }
