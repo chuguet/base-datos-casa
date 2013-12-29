@@ -12,9 +12,9 @@
 			$('input[id=email]').val(usuario.email);
 			$('input[id=usuario]').val(usuario.user);
 			if(usuario.rol=="Administrador"){
-				$('input:radio[name=rol]')[0].checked = true;
+				$('#administrador').prop('checked', true).button("refresh");
 			}else if (usuario.rol=="Usuario"){
-				$('input:radio[name=rol]')[1].checked = true;
+				$('#user').prop('checked', true).button("refresh");
 			}
 		};
 	</c:if>
