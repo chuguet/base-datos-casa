@@ -2,7 +2,9 @@ package com.hsl.library.controller.control;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -135,6 +137,25 @@ public class PeliculaController {
 	}
 
 	/**
+	 * Gets the paises.
+	 * 
+	 * @return the paises
+	 */
+	@RequestMapping(value = "/paises", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getPaises() {
+		List<String> result = new ArrayList<String>();
+		String[] countries = Locale.getISOCountries();
+
+		for (String country : countries) {
+			Locale locale = new Locale("", country);
+			result.add(locale.getDisplayName());
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	/**
 	 * Insert.
 	 * 
 	 * @param peliculaDTO
@@ -210,8 +231,8 @@ public class PeliculaController {
 			@RequestParam(value = "genero") String genero) {
 		List<PeliculaDTO> result = new ArrayList<PeliculaDTO>();
 		try {
-			BusquedaPeliculaDTO busquedaDTO = new BusquedaPeliculaDTO(titulo, director,
-					interpretes, distribuidora, genero);
+			BusquedaPeliculaDTO busquedaDTO = new BusquedaPeliculaDTO(titulo,
+					director, interpretes, distribuidora, genero);
 			List<Pelicula> peliculas = this.peliculaService.findAll();
 			if (busquedaDTO.isEmpty()) {
 				for (Pelicula pelicula : peliculas) {
@@ -243,7 +264,8 @@ public class PeliculaController {
 	 *            the busqueda
 	 * @return the boolean
 	 */
-	private Boolean peliculasSimilares(Pelicula pelicula, BusquedaPeliculaDTO busqueda) {
+	private Boolean peliculasSimilares(Pelicula pelicula,
+			BusquedaPeliculaDTO busqueda) {
 		return pelicula.getDirector().toUpperCase()
 				.contains(busqueda.getDirector().toUpperCase())
 				&& pelicula.getDistribuidora().toUpperCase()
