@@ -25,6 +25,9 @@
 				<input id="titulo" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="autores">Autores:</label> 
 				<input id="autores" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<label for="decada">D&eacute;cada:</label> 
+				<input id="decada" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="btnReset" type="button" value="Reset" />
 			</p>
 		</div>
 	</fieldset>

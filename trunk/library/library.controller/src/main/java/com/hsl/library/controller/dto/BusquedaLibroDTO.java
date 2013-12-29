@@ -9,6 +9,9 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	/** The autores. */
 	private String autores;
 
+	/** The decada. */
+	private String decada;
+
 	/** The titulo. */
 	private String titulo;
 
@@ -26,11 +29,14 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 *            the titulo
 	 * @param autores
 	 *            the autores
+	 * @param decada
+	 *            the decada
 	 */
-	public BusquedaLibroDTO(String titulo, String autores) {
+	public BusquedaLibroDTO(String titulo, String autores, String decada) {
 		super();
 		this.titulo = encoding(titulo);
 		this.autores = encoding(autores);
+		this.decada = encoding(decada);
 	}
 
 	/**
@@ -40,6 +46,15 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 */
 	public String getAutores() {
 		return autores;
+	}
+
+	/**
+	 * Gets the decada.
+	 * 
+	 * @return the decada
+	 */
+	public String getDecada() {
+		return decada;
 	}
 
 	/**
@@ -57,7 +72,8 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 * @return the boolean
 	 */
 	public Boolean isEmpty() {
-		return this.titulo.isEmpty() && this.autores.isEmpty();
+		return this.titulo.isEmpty() && this.autores.isEmpty()
+				&& this.decada.isEmpty();
 	}
 
 	/**
@@ -68,6 +84,16 @@ public class BusquedaLibroDTO extends AbstractBusquedaDTO {
 	 */
 	public void setAutores(String autores) {
 		this.autores = autores;
+	}
+
+	/**
+	 * Sets the decada.
+	 * 
+	 * @param decada
+	 *            the new decada
+	 */
+	public void setDecada(String decada) {
+		this.decada = decada;
 	}
 
 	/**

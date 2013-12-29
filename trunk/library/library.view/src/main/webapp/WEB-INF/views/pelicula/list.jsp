@@ -27,10 +27,11 @@
 				<input id="director"type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" /> 
 				<label for="interpretes">Int&eacute;rpretes:</label>
 				<input id="interpretes" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-				<label for="distribuidora">Distribuidora:</label>
-				<input id="distribuidora" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<label for="decada">D&eacute;cada:</label>
+				<input id="decada" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 				<label for="genero">G&eacute;nero:</label>
 				<input id="genero" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="btnReset" type="button" value="Reset" />
 			</p>
 		</div>
 	</fieldset>

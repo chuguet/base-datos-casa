@@ -38,7 +38,7 @@ import com.hsl.library.model.service.IPeliculaService;
  */
 @Controller
 @RequestMapping("/pelicula")
-public class PeliculaController {
+public class PeliculaController extends AbstractUtilController {
 
 	/** The Constant LOG. */
 	private final static Log LOG = LogFactory.getLog(PeliculaController.class);
@@ -104,6 +104,12 @@ public class PeliculaController {
 			result.add(calificacion.getNameId());
 		}
 		return result;
+	}
+
+	@RequestMapping(value = "/decadas", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getDecadas() {
+		return super.getDecadas();
 	}
 
 	/**
@@ -227,12 +233,12 @@ public class PeliculaController {
 			@RequestParam(value = "titulo") String titulo,
 			@RequestParam(value = "director") String director,
 			@RequestParam(value = "interpretes") String interpretes,
-			@RequestParam(value = "distribuidora") String distribuidora,
+			@RequestParam(value = "decada") String decada,
 			@RequestParam(value = "genero") String genero) {
 		List<PeliculaDTO> result = new ArrayList<PeliculaDTO>();
 		try {
 			BusquedaPeliculaDTO busquedaDTO = new BusquedaPeliculaDTO(titulo,
-					director, interpretes, distribuidora, genero);
+					director, interpretes, decada, genero);
 			List<Pelicula> peliculas = this.peliculaService.findAll();
 			if (busquedaDTO.isEmpty()) {
 				for (Pelicula pelicula : peliculas) {
@@ -268,14 +274,14 @@ public class PeliculaController {
 			BusquedaPeliculaDTO busqueda) {
 		return pelicula.getDirector().toUpperCase()
 				.contains(busqueda.getDirector().toUpperCase())
-				&& pelicula.getDistribuidora().toUpperCase()
-						.contains(busqueda.getDistribuidora().toUpperCase())
 				&& pelicula.getInterpretes().toUpperCase()
 						.contains(busqueda.getInterpretes().toUpperCase())
 				&& pelicula.getTitulo().toUpperCase()
 						.contains(busqueda.getTitulo().toUpperCase())
 				&& pelicula.getGenero().getNameId().toUpperCase()
-						.contains(busqueda.getGenero().toUpperCase());
+						.contains(busqueda.getGenero().toUpperCase())
+				&& estaEnDecada(pelicula.getFechaEstreno(),
+						busqueda.getDecada());
 	}
 
 	/**

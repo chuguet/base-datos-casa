@@ -6,11 +6,11 @@ package com.hsl.library.controller.dto;
  */
 public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 
+	/** The decada. */
+	private String decada;
+
 	/** The director. */
 	private String director;
-
-	/** The distribuidora. */
-	private String distribuidora;
 
 	/** The genero. */
 	private String genero;
@@ -37,19 +37,28 @@ public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 	 *            the director
 	 * @param interpretes
 	 *            the interpretes
-	 * @param distribuidora
-	 *            the distribuidora
+	 * @param decada
+	 *            the decada
 	 * @param genero
 	 *            the genero
 	 */
 	public BusquedaPeliculaDTO(String titulo, String director,
-			String interpretes, String distribuidora, String genero) {
+			String interpretes, String decada, String genero) {
 		super();
 		this.genero = encoding(genero);
 		this.titulo = encoding(titulo);
 		this.director = encoding(director);
 		this.interpretes = encoding(interpretes);
-		this.distribuidora = encoding(distribuidora);
+		this.decada = encoding(decada);
+	}
+
+	/**
+	 * Gets the decada.
+	 * 
+	 * @return the decada
+	 */
+	public String getDecada() {
+		return decada;
 	}
 
 	/**
@@ -59,15 +68,6 @@ public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 	 */
 	public String getDirector() {
 		return director;
-	}
-
-	/**
-	 * Gets the distribuidora.
-	 * 
-	 * @return the distribuidora
-	 */
-	public String getDistribuidora() {
-		return distribuidora;
 	}
 
 	/**
@@ -103,9 +103,19 @@ public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 	 * @return the boolean
 	 */
 	public Boolean isEmpty() {
-		return this.director.isEmpty() && this.distribuidora.isEmpty()
+		return this.director.isEmpty() && this.decada.isEmpty()
 				&& this.genero.isEmpty() && this.interpretes.isEmpty()
 				&& this.titulo.isEmpty();
+	}
+
+	/**
+	 * Sets the decada.
+	 * 
+	 * @param decada
+	 *            the new decada
+	 */
+	public void setDecada(String decada) {
+		this.decada = decada;
 	}
 
 	/**
@@ -116,16 +126,6 @@ public class BusquedaPeliculaDTO extends AbstractBusquedaDTO {
 	 */
 	public void setDirector(String director) {
 		this.director = director;
-	}
-
-	/**
-	 * Sets the distribuidora.
-	 * 
-	 * @param distribuidora
-	 *            the new distribuidora
-	 */
-	public void setDistribuidora(String distribuidora) {
-		this.distribuidora = distribuidora;
 	}
 
 	/**

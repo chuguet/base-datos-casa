@@ -5,7 +5,7 @@ var libro = {
 			datatype : 'local',
 			data : [],
 			colNames : [
-					"Id", "T&iacute;tulo", "Autore/s", "Materia/s", "Edici&oacute;n", "Precio"
+					"Id", "T&iacute;tulo", "Autore/s", "Materia/s", "Edici&oacute;n", "Fecha edici&oacute;n", "Precio"
 			],
 			colModel : [
 					{
@@ -23,7 +23,7 @@ var libro = {
 					}, {
 						name : 'autores',
 						index : 'autores',
-						width : 40,
+						width : 30,
 						sorttype : 'string',
 						sortable : true,
 						align : 'left'
@@ -38,6 +38,13 @@ var libro = {
 						name : 'edicion',
 						index : 'edicion',
 						width : 20,
+						sorttype : 'string',
+						sortable : true,
+						align : 'right'
+					},{
+						name : 'fechaEdicion',
+						index : 'fechaEdicion',
+						width : 10,
 						sorttype : 'string',
 						sortable : true,
 						align : 'right'
@@ -98,15 +105,27 @@ var libro = {
 			});
 		});
 		$("#btnEliminar").button("disable");
+		
+		$("#btnReset").button().click(function(){
+			$("input[id=titulo]").val("");
+			$("input[id=autores]").val("");
+			$("input[id=decada]").val("");
+			libro.busqueda(null);
+		});
 	
+		generic.get('libro/decadas', null, function(){
+			$("#decada").autocomplete({
+				source:arguments[0],
+				minLength: 0,
+				select:function(event, ui){
+					libro.busqueda(ui.item.value);
+				}
+			}).click(function(){
+				 $(this).autocomplete('search', "");
+			});
+		});
 		$(".text").keyup(function(){
-			var titulo = $("input[id=titulo]").val();
-			var autores = $("input[id=autores]").val();
-			var data = {
-					titulo : titulo,
-					autores : autores
-			};
-			generic.get('libro/busqueda',data,generic.showInformation);
+			libro.busqueda(null);
 		});
 	},
 	'formatForm' : function() {
@@ -210,6 +229,22 @@ var libro = {
 				generic.getList('libro');
 			});
 		};
+	},
+	'busqueda' : function (value){
+		var titulo = $("input[id=titulo]").val();
+		var autores = $("input[id=autores]").val();
+		var decada;
+		if(value != null){
+			decada = value;
+		}else{
+			decada = $("input[id=decada]").val();
+		}
+		var data = {
+				titulo : titulo,
+				autores : autores,
+				decada : decada
+		};
+		generic.get('libro/busqueda',data,generic.showInformation);
 	}
 };
 
