@@ -106,6 +106,12 @@ public class PeliculaController extends AbstractUtilController {
 		return result;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.hsl.library.controller.control.AbstractUtilController#getDecadas()
+	 */
 	@RequestMapping(value = "/decadas", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getDecadas() {
@@ -172,7 +178,7 @@ public class PeliculaController extends AbstractUtilController {
 	public @ResponseBody
 	MensajeDTO insert(@RequestBody PeliculaDTO peliculaDTO) {
 		if (peliculaDTO == null) {
-			return new MensajeDTO("Un pelicula es requerida", false);
+			return new MensajeDTO("Una pelicula es requerida", false);
 		}
 		try {
 			Pelicula pelicula = peliculaUtilDTO.toBusiness(peliculaDTO);
@@ -221,8 +227,8 @@ public class PeliculaController extends AbstractUtilController {
 	 *            the director
 	 * @param interpretes
 	 *            the interpretes
-	 * @param distribuidora
-	 *            the distribuidora
+	 * @param decada
+	 *            the decada
 	 * @param genero
 	 *            the genero
 	 * @return the list

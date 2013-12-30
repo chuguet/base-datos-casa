@@ -3,15 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <style>
-	.table{display:inline-block; padding-left:35px; padding-right:35px;}
+	.table{display:inline-block; vertical-align:top; padding-left:35px; padding-right:35px;}
 	input.text{vertical-align: top; display:block; width:350px !important;}
+	h2{padding-left:35px;}
 </style>
 
 <script type="text/javascript">
 	libro.formatDetail();
 	function showInformationIntoView(libro){
 		$('input[id=id]').val(libro.id);
-		$('input[id=titulo]').val(libro.titulo);
+		$('h2').text(libro.titulo);
 		$('input[id=autores]').val(libro.autores);
 		$('input[id=coleccion]').val(libro.coleccion);
 		$('input[id=descripcion]').val(libro.descripcion);
@@ -41,12 +42,9 @@
 <form id="alta">
 	<fieldset>
 		<legend>Ficha de Libro</legend>
+		<h2></h2>
 		<div class="table">
 			<input type="hidden" id="id" />
-			<p>
-				<label for="titulo">T&iacute;tulo:</label>
-				<input id="titulo" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
-			</p>
 			<p>
 				<label for="autores">Autore/s:</label>
 				<input id="autores" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
@@ -63,12 +61,12 @@
 				<label for="edicion">Edici&oacute;n:</label>
 				<input id="edicion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
-		</div>
-		<div class="table">
 			<p>
 				<label for="encuadernacion">Encuadernaci&oacute;n:</label>
 				<input id="encuadernacion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
+		</div>
+		<div class="table">
 			<p>
 				<label for="fechaEdicion">Fecha edici&oacute;n:</label>
 				<input id="fechaEdicion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
@@ -85,12 +83,12 @@
 				<label for="isbn10">ISBN10:</label>
 				<input id="isbn10" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
-		</div>
-		<div class="table">
 			<p>
 				Lengua publicaci&oacute;n:
 				<input id="lenguaPublicacion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
 			</p>
+		</div>
+		<div class="table">
 			<p>
 				Lengua traducci&oacute;n:
 				<input id="lenguaTraduccion" readonly=true type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />

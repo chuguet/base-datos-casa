@@ -67,12 +67,6 @@ public class LibroController extends AbstractUtilController {
 		return new StringBuffer("libro/").append(operacion).toString();
 	}
 
-	@RequestMapping(value = "/decadas", method = RequestMethod.GET)
-	public @ResponseBody
-	List<String> getDecadas() {
-		return super.getDecadas();
-	}
-
 	/**
 	 * Filtrar libros.
 	 * 
@@ -91,6 +85,18 @@ public class LibroController extends AbstractUtilController {
 			}
 		}
 		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.hsl.library.controller.control.AbstractUtilController#getDecadas()
+	 */
+	@RequestMapping(value = "/decadas", method = RequestMethod.GET)
+	public @ResponseBody
+	List<String> getDecadas() {
+		return super.getDecadas();
 	}
 
 	/**
@@ -189,6 +195,8 @@ public class LibroController extends AbstractUtilController {
 	 *            the titulo
 	 * @param autores
 	 *            the autores
+	 * @param decada
+	 *            the decada
 	 * @return the list
 	 */
 	@RequestMapping(value = "/busqueda", method = RequestMethod.GET)

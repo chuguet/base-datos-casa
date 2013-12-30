@@ -14,7 +14,7 @@ import com.hsl.library.model.bean.Libro;
  * The Class LibroUtilDTO.
  */
 @Component
-public class LibroUtilDTO implements ILibroUtilDTO {
+class LibroUtilDTO implements ILibroUtilDTO {
 
 	/** The Constant DATE_FORMATTER. */
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(

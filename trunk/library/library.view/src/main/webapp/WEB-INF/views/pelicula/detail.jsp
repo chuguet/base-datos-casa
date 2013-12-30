@@ -31,7 +31,7 @@
 
 <form id="alta">
 	<fieldset>
-		<legend>Detalle de pel&iacute;cula</legend>
+		<legend>Ficha de pel&iacute;cula</legend>
 		<h2></h2>
 		<div class="table">
 			<input type="hidden" id="id" />
