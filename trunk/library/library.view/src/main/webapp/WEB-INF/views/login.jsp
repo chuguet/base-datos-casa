@@ -8,7 +8,7 @@
 	<meta name="description" content="Pantalla de acceso al sistema" />
 	<title>La Bibliofilmoteca</title>
 	
-	<link href="../resources/imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="resources/imgs/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	
 	<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 	<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
