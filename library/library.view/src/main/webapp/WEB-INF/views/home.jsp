@@ -14,7 +14,7 @@
 		
 		<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
-<!-- 		<link href="resources/css/jquery.alerts.css" rel="stylesheet" type="text/css"> -->
+		<link href="resources/css/jquery.alerts.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/ui.jqgrid.css" rel="stylesheet" type="text/css">
 
 		<script src="resources/js/jquery.min.js" type="text/javascript"></script>
