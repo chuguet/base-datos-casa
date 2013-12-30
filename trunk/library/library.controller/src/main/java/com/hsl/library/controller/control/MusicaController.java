@@ -2,9 +2,7 @@ package com.hsl.library.controller.control;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -107,15 +105,7 @@ public class MusicaController extends AbstractUtilController {
 	@RequestMapping(value = "/paises", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getPaises() {
-		List<String> result = new ArrayList<String>();
-		String[] countries = Locale.getISOCountries();
-
-		for (String country : countries) {
-			Locale locale = new Locale("", country);
-			result.add(locale.getDisplayName());
-		}
-		Collections.sort(result);
-		return result;
+		return super.getPaises();
 	}
 
 	/**
