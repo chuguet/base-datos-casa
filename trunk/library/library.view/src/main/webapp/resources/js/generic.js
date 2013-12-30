@@ -173,3 +173,24 @@ var generic = {
 		showInformationIntoView(information);
 	}
 };
+
+function jAlert(output_msg, title_msg)
+{
+    if (!title_msg)
+        title_msg = 'Alert';
+
+    if (!output_msg)
+        output_msg = 'Sin informaci&oacute;n.';
+
+    $("<div title="+title_msg+"></div>").html(output_msg).dialog({
+        resizable: false,
+        width: "auto",
+        modal: true,
+        buttons: {
+            "Cerrar": function() 
+            {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+}

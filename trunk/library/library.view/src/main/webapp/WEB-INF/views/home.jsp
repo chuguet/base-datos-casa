@@ -14,14 +14,12 @@
 		
 		<link href="resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 		<link href="resources/css/generic.css" rel="stylesheet" type="text/css" />
-		<link href="resources/css/jquery.alerts.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/ui.jqgrid.css" rel="stylesheet" type="text/css">
 
 		<script src="resources/js/jquery.min.js" type="text/javascript"></script>
 		<script src="resources/js/jquery-ui.min.js" type="text/javascript"></script>
 		<script src="resources/js/generic.js" type="text/javascript"></script>
 		
-		<script src="resources/js/jquery.alerts.js" type="text/javascript"></script>
 		<script src="resources/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 		<script src="resources/js/i18n/grid.locale-es.js" type="text/javascript"></script>
 		
