@@ -2,9 +2,7 @@ package com.hsl.library.controller.control;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -23,9 +21,6 @@ import com.hsl.library.controller.dto.BusquedaPeliculaDTO;
 import com.hsl.library.controller.dto.MensajeDTO;
 import com.hsl.library.controller.dto.PeliculaDTO;
 import com.hsl.library.controller.dto.util.IPeliculaUtilDTO;
-import com.hsl.library.model.bean.Calificacion;
-import com.hsl.library.model.bean.Formato;
-import com.hsl.library.model.bean.Genero;
 import com.hsl.library.model.bean.Pelicula;
 import com.hsl.library.model.exception.DatabaseDeleteException;
 import com.hsl.library.model.exception.DatabaseInsertException;
@@ -99,11 +94,7 @@ public class PeliculaController extends AbstractUtilController {
 	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getCalificaciones() {
-		List<String> result = new ArrayList<String>();
-		for (Calificacion calificacion : Calificacion.values()) {
-			result.add(calificacion.getNameId());
-		}
-		return result;
+		return super.getCalificaciones();
 	}
 
 	/*
@@ -126,11 +117,7 @@ public class PeliculaController extends AbstractUtilController {
 	@RequestMapping(value = "/formatos", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getFormatos() {
-		List<String> result = new ArrayList<String>();
-		for (Formato formato : Formato.values()) {
-			result.add(formato.getNameId());
-		}
-		return result;
+		return super.getFormatos();
 	}
 
 	/**
@@ -141,11 +128,7 @@ public class PeliculaController extends AbstractUtilController {
 	@RequestMapping(value = "/generos", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getGeneros() {
-		List<String> result = new ArrayList<String>();
-		for (Genero genero : Genero.values()) {
-			result.add(genero.getNameId());
-		}
-		return result;
+		return super.getGeneros();
 	}
 
 	/**
@@ -156,15 +139,7 @@ public class PeliculaController extends AbstractUtilController {
 	@RequestMapping(value = "/paises", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getPaises() {
-		List<String> result = new ArrayList<String>();
-		String[] countries = Locale.getISOCountries();
-
-		for (String country : countries) {
-			Locale locale = new Locale("", country);
-			result.add(locale.getDisplayName());
-		}
-		Collections.sort(result);
-		return result;
+		return super.getPaises();
 	}
 
 	/**

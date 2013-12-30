@@ -6,6 +6,9 @@ package com.hsl.library.model.bean;
  */
 public enum Formato {
 
+	/** The digital. */
+	DIGITAL("DIGITAL"),
+
 	/** The blue ray. */
 	BLUE_RAY("BLUE-RAY"),
 

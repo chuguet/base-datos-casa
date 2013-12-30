@@ -2,9 +2,7 @@ package com.hsl.library.controller.control;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -107,17 +105,7 @@ public class LibroController extends AbstractUtilController {
 	@RequestMapping(value = "/lenguajes", method = RequestMethod.GET)
 	public @ResponseBody
 	List<String> getLenguajes() {
-		List<String> result = new ArrayList<String>();
-		String[] languages = Locale.getISOLanguages();
-
-		for (String language : languages) {
-			Locale locale = new Locale(language);
-			result.add(new StringBuffer(locale.getDisplayLanguage()
-					.substring(0, 1).toUpperCase()).append(
-					locale.getDisplayLanguage().substring(1)).toString());
-		}
-		Collections.sort(result);
-		return result;
+		return super.getLenguajes();
 	}
 
 	/**
