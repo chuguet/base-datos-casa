@@ -28,6 +28,7 @@
 		<script src="resources/js/views/usuario.js" type="text/javascript"></script>
 		<script src="resources/js/views/pelicula.js" type="text/javascript"></script>
 		<script src="resources/js/views/libro.js" type="text/javascript"></script>
+		<script src="resources/js/views/musica.js" type="text/javascript"></script>
 	</head>
 	
 	<body class="web" >
@@ -47,6 +48,7 @@
 			</sec:authorize>
 			<a href="javascript:void" onclick="javascript:generic.getList('pelicula');" title="Ver peliculas" class="itemMenu">Pel&iacute;culas</a>
 			<a href="javascript:void" onclick="javascript:generic.getList('libro');" title="Ver libros" class="itemMenu">Libros</a>
+			<a href="javascript:void" onclick="javascript:generic.getList('musica');" title="Ver m&uacute;sica" class="itemMenu">M&uacute;sica</a>
 			<div id="usuario">
 				<span id="nombreUsuario"><b>Usuario :</b> ${nombre} ${apellidos}</span> 
 				<a href="<c:url value="/home" />" id="btnHome" title="Home"></a>

@@ -12,7 +12,7 @@ import com.hsl.library.model.bean.Usuario;
  * The Class DataTransferObjectUsuario.
  */
 @Component
-public class UsuarioUtilDTO implements IUsuarioUtilDTO {
+class UsuarioUtilDTO implements IUsuarioUtilDTO {
 
 	/*
 	 * (non-Javadoc)

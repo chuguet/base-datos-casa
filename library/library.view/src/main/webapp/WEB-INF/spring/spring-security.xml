@@ -27,6 +27,12 @@
 		<intercept-url pattern="/libro/*/detail" access="ROLE_ADMIN, ROLE_USER" />
 		<intercept-url pattern="/libro/**" access="ROLE_ADMIN" />
 		
+		<intercept-url pattern="/musica" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/musica/*" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/musica/*/list" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/musica/*/detail" access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/musica/**" access="ROLE_ADMIN" />
+		
 		<intercept-url pattern="/logout" access="ROLE_USER, ROLE_ADMIN" />
 		<form-login login-page="/login" default-target-url="/home" authentication-failure-url="/loginfailed" login-processing-url="/j_spring_security_check" />
 		<logout logout-success-url="/login" />

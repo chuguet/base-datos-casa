@@ -77,11 +77,11 @@
 			</p>
 			<p>
 				<label for="isbn13">ISBN 13:</label>
-				<input id="isbn13" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="isbn13" type="textbox" maxlength="13" class="text ui-widget-content ui-corner-all" />
 			</p>
 			<p>
 				<label for="isbn10">ISBN10:</label>
-				<input id="isbn10" type="textbox" maxlength="200" class="text ui-widget-content ui-corner-all" />
+				<input id="isbn10" type="textbox" maxlength="10" class="text ui-widget-content ui-corner-all" />
 			</p>
 		</div>
 		<div class="table">

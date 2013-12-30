@@ -17,7 +17,7 @@ import com.hsl.library.model.bean.Pelicula;
  * The Class PeliculaUtilDTO.
  */
 @Component
-public class PeliculaUtilDTO implements IPeliculaUtilDTO {
+class PeliculaUtilDTO implements IPeliculaUtilDTO {
 
 	/** The Constant DATE_FORMATTER. */
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(
